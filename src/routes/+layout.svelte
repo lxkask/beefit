@@ -6,6 +6,6 @@
 
 <Navbar />
 
-<main class="p-4">
+<main>
 	{@render children()}
 </main>

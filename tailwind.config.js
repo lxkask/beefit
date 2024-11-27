@@ -8,7 +8,7 @@ export default {
         white: '#FFFFFF',
         yellow: '#FFC107',
       },
-			  
+      
 			fontFamily: {
 				heading: ["'Oswald'", 'sans-serif'],
 				body: ["'Roboto'", 'sans-serif']
