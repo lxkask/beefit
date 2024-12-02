@@ -1,9 +1,9 @@
 <script>
     import banner from '../lib/images/banner.jpg';
     import equipment from '../lib/images/equipment.png';
-    import clock from '../lib/images/clock.svg';
-    import person from '../lib/images/person.svg';
-    import price_tag from '../lib/images/price_tag.svg';
+    import clock from '../lib/images/clock-icon.svg';
+    import person from '../lib/images/person-icon.svg';
+    import pricetag from '../lib/images/pricetag-icon.svg';
 </script>
 <main>
     <!-- Hero Section -->
@@ -24,23 +24,21 @@
     <!-- Floating Button Section -->
     <section class="relative z-10">
         <div class="flex justify-center shadow-lg absolute -top-12 left-1/2 transform -translate-x-1/2 w-full max-w-xl">
-          <!-- Button with Icon for Trainers -->
-          <a href="/trainers" class="btn flex justify-center items-center rounded-l-lg bg-yellow text-dark font-body px-2 py-7 flex-grow text-center space-x-2 border-r-white border-r-[1px] hover:bg-yellow_hover">
+        <!-- Button with Icon for Trainers -->
+        <a href="/trainers" class="btn flex justify-center items-center rounded-l-lg bg-yellow text-dark font-body px-2 py-7 flex-grow text-center space-x-2 hover:bg-yellow_hover">
             <img src="{person}" alt="Person Icon" class="w-8 h-8" />
             <span>Trenéři</span>
-          </a>
-      
-          <!-- Button with Icon for Opening Hours -->
-          <a href="/opening-hours" class="btn flex justify-center items-center bg-yellow text-dark font-body px-2 py-7 flex-grow text-center space-x-2 hover:bg-yellow_hover">
+        </a>
+        <!-- Button with Icon for Opening Hours -->
+        <a href="/opening-hours" class="btn flex justify-center items-center bg-yellow text-dark font-body px-2 py-7 flex-grow text-center space-x-2 hover:bg-yellow_hover">
             <img src="{clock}" alt="Clock Icon" class="w-7 h-7" />
             <span>Otevírací doba</span>
-          </a>
-      
-          <!-- Button with Icon for Pricing -->
-          <a href="/pricing" class="btn flex justify-center items-center rounded-r-lg bg-yellow text-dark font-body px-2 py-7 flex-grow text-center space-x-2 border-l-white border-l-[1px] hover:bg-yellow_hover">
-            <img src="{price_tag}" alt="Price Tag Icon" class="w-7 h-7" />
+        </a>
+        <!-- Button with Icon for Pricing -->
+        <a href="/pricing" class="btn flex justify-center items-center rounded-r-lg bg-yellow text-dark font-body px-2 py-7 flex-grow text-center space-x-2 hover:bg-yellow_hover">
+            <img src="{pricetag}" alt="Price Tag Icon" class="w-7 h-7" />
             <span>Ceník</span>
-          </a>
+        </a>
         </div>
     </section>
     <!-- Equipment Section -->
@@ -63,7 +61,6 @@
             </div>
         </div>
     </section>
-
     <!-- Location Section -->
     <section class="location py-16 bg-grey">
         <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
