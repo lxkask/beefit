@@ -1,13 +1,16 @@
 <script>
     import banner from '../lib/images/banner.jpg';
     import equipment from '../lib/images/equipment.png';
+    import clock from '../lib/images/clock.svg';
+    import person from '../lib/images/person.svg';
+    import price_tag from '../lib/images/price_tag.svg';
 </script>
 <main>
     <!-- Hero Section -->
     <section class="hero bg-cover bg-center h-[80vh] w-full flex items-end" style="background-image: url({banner});">
-        <div class="container mx-auto py-32">
+        <div class="container mx-auto py-32 px-32">
             <h1 class="text-5xl font-bold text-white font-heading">Fitness BeeFIT</h1>
-            <p class="text-xl mt-4 text-white font-body w-1/3">
+            <p class="text-xl mt-4 text-white font-body w-full md:w-2/5">
                 Lorem ipsum dolor sit 
                 <span class="text-yellow">amet</span>,
                 consectetuer adipiscing elit. Nullam eget  nisl. Aliquam erat 
@@ -20,10 +23,24 @@
     </section>
     <!-- Floating Button Section -->
     <section class="relative z-10">
-        <div class="flex justify-center space-x-4 bg-yellow p-6 rounded-lg shadow-lg absolute -top-12 left-1/2 transform -translate-x-1/2">
-            <a href="/trainers" class="btn bg-yellow text-dark font-body px-6 py-2">Trenéři</a>
-            <a href="/opening-hours" class="btn bg-yellow text-dark font-body px-6 py-2">Otevírací doba</a>
-            <a href="/pricing" class="btn bg-yellow text-dark font-body px-6 py-2">Ceník</a>
+        <div class="flex justify-center shadow-lg absolute -top-12 left-1/2 transform -translate-x-1/2 w-full max-w-xl">
+          <!-- Button with Icon for Trainers -->
+          <a href="/trainers" class="btn flex justify-center items-center rounded-l-lg bg-yellow text-dark font-body px-2 py-7 flex-grow text-center space-x-2 border-r-white border-r-[1px] hover:bg-yellow_hover">
+            <img src="{person}" alt="Person Icon" class="w-8 h-8" />
+            <span>Trenéři</span>
+          </a>
+      
+          <!-- Button with Icon for Opening Hours -->
+          <a href="/opening-hours" class="btn flex justify-center items-center bg-yellow text-dark font-body px-2 py-7 flex-grow text-center space-x-2 hover:bg-yellow_hover">
+            <img src="{clock}" alt="Clock Icon" class="w-7 h-7" />
+            <span>Otevírací doba</span>
+          </a>
+      
+          <!-- Button with Icon for Pricing -->
+          <a href="/pricing" class="btn flex justify-center items-center rounded-r-lg bg-yellow text-dark font-body px-2 py-7 flex-grow text-center space-x-2 border-l-white border-l-[1px] hover:bg-yellow_hover">
+            <img src="{price_tag}" alt="Price Tag Icon" class="w-7 h-7" />
+            <span>Ceník</span>
+          </a>
         </div>
     </section>
     <!-- Equipment Section -->
@@ -48,7 +65,7 @@
     </section>
 
     <!-- Location Section -->
-    <section class="location py-16 bg-black">
+    <section class="location py-16 bg-grey">
         <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
             <!-- Address -->
             <div class="mx-auto flex flex-col justify-center">

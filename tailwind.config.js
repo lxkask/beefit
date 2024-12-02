@@ -5,8 +5,10 @@ export default {
     extend: {
       colors: {
         black: '#121212',
+        grey: '#1E1E1E',
         white: '#FFFFFF',
         yellow: '#FFC107',
+        yellow_hover: '#FFD54F',
       },
       
 			fontFamily: {
