@@ -9,95 +9,97 @@
 
 <main>
     <!-- Gym Info Section -->
-    <section class="py-20 bg-black text-white">
+    <section class="pt-5 pb-20 bg-black text-white">
         <div class="container mx-auto text-center">
             <h2 class="text-3xl font-bold font-heading mb-10">O BeeFIT</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-                <!-- Info Item 1 -->
-                <div class="flex flex-col sm:flex-row items-center">
-                    <div class="bg-yellow rounded-full p-4 flex items-center justify-center w-16 h-16">
-                        <img src={area} alt="Area Icon" class="w-8 h-8" />
+            <div class="flex justify-center">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+                    <!-- Info Item 1 -->
+                    <div class="flex flex-col sm:flex-row items-center">
+                        <div class="bg-yellow rounded-full p-4 flex items-center justify-center w-16 h-16">
+                            <img src={area} alt="Area Icon" class="w-8 h-8" />
+                        </div>
+                        <div class="sm:ml-4 mt-4 sm:mt-0 text-center sm:text-left font-bold text-lg">
+                            <p>Rozloha</p>
+                            <p class="text-yellow font-bold text-xl">1500 m²</p>
+                        </div>
                     </div>
-                    <div class="sm:ml-4 mt-4 sm:mt-0 text-center sm:text-left font-bold text-lg">
-                        <p>Rozloha</p>
-                        <p class="text-yellow font-bold text-xl">1500 m²</p>
+        
+                    <!-- Info Item 2 -->
+                    <div class="flex flex-col sm:flex-row items-center">
+                        <div class="bg-yellow rounded-full p-4 flex items-center justify-center w-16 h-16">
+                            <img src={parking} alt="Parking Icon" class="w-8 h-8" />
+                        </div>
+                        <div class="sm:ml-4 mt-4 sm:mt-0 text-center sm:text-left font-bold text-lg">
+                            <p>Parkování</p>
+                            <p class="text-yellow font-bold text-xl">V okolí</p>
+                        </div>
                     </div>
-                </div>
-    
-                <!-- Info Item 2 -->
-                <div class="flex flex-col sm:flex-row items-center">
-                    <div class="bg-yellow rounded-full p-4 flex items-center justify-center w-16 h-16">
-                        <img src={parking} alt="Parking Icon" class="w-8 h-8" />
+        
+                    <!-- Info Item 3 -->
+                    <div class="flex flex-col sm:flex-row items-center">
+                        <div class="bg-yellow rounded-full p-4 flex items-center justify-center w-16 h-16">
+                            <img src={area} alt="Vybavení Icon" class="w-8 h-8" />
+                        </div>
+                        <div class="sm:ml-4 mt-4 sm:mt-0 text-center sm:text-left font-bold text-lg">
+                            <p>Vybavení</p>
+                            <p class="text-yellow font-bold text-xl">Moderní stroje</p>
+                        </div>
                     </div>
-                    <div class="sm:ml-4 mt-4 sm:mt-0 text-center sm:text-left font-bold text-lg">
-                        <p>Parkování</p>
-                        <p class="text-yellow font-bold text-xl">V okolí</p>
+        
+                    <!-- Info Item 4 -->
+                    <div class="flex flex-col sm:flex-row items-center">
+                        <div class="bg-yellow rounded-full p-4 flex items-center justify-center w-16 h-16">
+                            <img src={area} alt="Relaxace Icon" class="w-8 h-8" />
+                        </div>
+                        <div class="sm:ml-4 mt-4 sm:mt-0 text-center sm:text-left font-bold text-lg">
+                            <p>Relaxace</p>
+                            <p class="text-yellow font-bold text-xl">Wellness zóna</p>
+                        </div>
                     </div>
-                </div>
-    
-                <!-- Info Item 3 -->
-                <div class="flex flex-col sm:flex-row items-center">
-                    <div class="bg-yellow rounded-full p-4 flex items-center justify-center w-16 h-16">
-                        <img src={area} alt="Vybavení Icon" class="w-8 h-8" />
+        
+                    <!-- Info Item 5 -->
+                    <div class="flex flex-col sm:flex-row items-center">
+                        <div class="bg-yellow rounded-full p-4 flex items-center justify-center w-16 h-16">
+                            <img src={area} alt="Otevírací doba Icon" class="w-8 h-8" />
+                        </div>
+                        <div class="sm:ml-4 mt-4 sm:mt-0 text-center sm:text-left font-bold text-lg">
+                            <p>Otevírací doba</p>
+                            <p class="text-yellow font-bold text-xl">6:00 - 22:00</p>
+                        </div>
                     </div>
-                    <div class="sm:ml-4 mt-4 sm:mt-0 text-center sm:text-left font-bold text-lg">
-                        <p>Vybavení</p>
-                        <p class="text-yellow font-bold text-xl">Moderní stroje</p>
+        
+                    <!-- Info Item 6 -->
+                    <div class="flex flex-col sm:flex-row items-center">
+                        <div class="bg-yellow rounded-full p-4 flex items-center justify-center w-16 h-16">
+                            <img src={area} alt="Trenéři Icon" class="w-8 h-8" />
+                        </div>
+                        <div class="sm:ml-4 mt-4 sm:mt-0 text-center sm:text-left font-bold text-lg">
+                            <p>Trenéři</p>
+                            <p class="text-yellow font-bold text-xl">Profesionální tým</p>
+                        </div>
                     </div>
-                </div>
-    
-                <!-- Info Item 4 -->
-                <div class="flex flex-col sm:flex-row items-center">
-                    <div class="bg-yellow rounded-full p-4 flex items-center justify-center w-16 h-16">
-                        <img src={area} alt="Relaxace Icon" class="w-8 h-8" />
+        
+                    <!-- Info Item 7 -->
+                    <div class="flex flex-col sm:flex-row items-center">
+                        <div class="bg-yellow rounded-full p-4 flex items-center justify-center w-16 h-16">
+                            <img src={area} alt="Ceník Icon" class="w-8 h-8" />
+                        </div>
+                        <div class="sm:ml-4 mt-4 sm:mt-0 text-center sm:text-left font-bold text-lg">
+                            <p>Ceník</p>
+                            <p class="text-yellow font-bold text-xl">Přehledné ceny</p>
+                        </div>
                     </div>
-                    <div class="sm:ml-4 mt-4 sm:mt-0 text-center sm:text-left font-bold text-lg">
-                        <p>Relaxace</p>
-                        <p class="text-yellow font-bold text-xl">Wellness zóna</p>
-                    </div>
-                </div>
-    
-                <!-- Info Item 5 -->
-                <div class="flex flex-col sm:flex-row items-center">
-                    <div class="bg-yellow rounded-full p-4 flex items-center justify-center w-16 h-16">
-                        <img src={area} alt="Otevírací doba Icon" class="w-8 h-8" />
-                    </div>
-                    <div class="sm:ml-4 mt-4 sm:mt-0 text-center sm:text-left font-bold text-lg">
-                        <p>Otevírací doba</p>
-                        <p class="text-yellow font-bold text-xl">6:00 - 22:00</p>
-                    </div>
-                </div>
-    
-                <!-- Info Item 6 -->
-                <div class="flex flex-col sm:flex-row items-center">
-                    <div class="bg-yellow rounded-full p-4 flex items-center justify-center w-16 h-16">
-                        <img src={area} alt="Trenéři Icon" class="w-8 h-8" />
-                    </div>
-                    <div class="sm:ml-4 mt-4 sm:mt-0 text-center sm:text-left font-bold text-lg">
-                        <p>Trenéři</p>
-                        <p class="text-yellow font-bold text-xl">Profesionální tým</p>
-                    </div>
-                </div>
-    
-                <!-- Info Item 7 -->
-                <div class="flex flex-col sm:flex-row items-center">
-                    <div class="bg-yellow rounded-full p-4 flex items-center justify-center w-16 h-16">
-                        <img src={area} alt="Ceník Icon" class="w-8 h-8" />
-                    </div>
-                    <div class="sm:ml-4 mt-4 sm:mt-0 text-center sm:text-left font-bold text-lg">
-                        <p>Ceník</p>
-                        <p class="text-yellow font-bold text-xl">Přehledné ceny</p>
-                    </div>
-                </div>
-    
-                <!-- Info Item 8 -->
-                <div class="flex flex-col sm:flex-row items-center">
-                    <div class="bg-yellow rounded-full p-4 flex items-center justify-center w-16 h-16">
-                        <img src={area} alt="Lokalita Icon" class="w-8 h-8" />
-                    </div>
-                    <div class="sm:ml-4 mt-4 sm:mt-0 text-center sm:text-left font-bold text-lg">
-                        <p>Lokalita</p>
-                        <p class="text-yellow font-bold text-xl">Snadná dostupnost</p>
+        
+                    <!-- Info Item 8 -->
+                    <div class="flex flex-col sm:flex-row items-center">
+                        <div class="bg-yellow rounded-full p-4 flex items-center justify-center w-16 h-16">
+                            <img src={area} alt="Lokalita Icon" class="w-8 h-8" />
+                        </div>
+                        <div class="sm:ml-4 mt-4 sm:mt-0 text-center sm:text-left font-bold text-lg">
+                            <p>Lokalita</p>
+                            <p class="text-yellow font-bold text-xl">Snadná dostupnost</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -125,4 +127,4 @@
         max-width: 100%;
         height: auto;
     }
-</style>    
+</style>

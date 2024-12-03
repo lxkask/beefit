@@ -28,11 +28,11 @@
       <!-- Navigation Links & Social Media -->
       <div class="flex md:items-center space-x-20">
         <nav class="space-y-1 flex flex-col">
-          <a href="/gym" class="hover:text-yellow-400">Posilovna</a>
-          <a href="/pricing" class="hover:text-yellow-400">Ceník</a>
-          <a href="/trainers" class="hover:text-yellow-400">Trenéři</a>
-          <a href="/schedule" class="hover:text-yellow-400">Rozvrh lekcí</a>
-          <a href="/contact" class="hover:text-yellow-400">Kontakt</a>
+          <a href="/posilovna" class="hover:text-yellow-400">Posilovna</a>
+          <a href="/cenik" class="hover:text-yellow-400">Ceník</a>
+          <a href="/treneri" class="hover:text-yellow-400">Trenéři</a>
+          <a href="/rozvrh" class="hover:text-yellow-400">Rozvrh lekcí</a>
+          <a href="/kontakt" class="hover:text-yellow-400">Kontakt</a>
         </nav>
         <div class="flex space-x-4 mt-4 items-center">
           <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
