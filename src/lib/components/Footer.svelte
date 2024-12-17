@@ -35,10 +35,10 @@
           <a href="/kontakt" class="hover:text-yellow-400">Kontakt</a>
         </nav>
         <div class="flex space-x-4 mt-4 items-center">
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+          <a href="https://instagram.com/kralova_music/" target="_blank" rel="noopener noreferrer">
             <img src={instagram} alt="Instagram" class="w-12 h-12 hover:opacity-75" />
           </a>
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+          <a href="https://facebook.com/kralovamusic" target="_blank" rel="noopener noreferrer">
             <img src={facebook} alt="Facebook" class="w-8 h-6 hover:opacity-75" />
           </a>
         </div>
