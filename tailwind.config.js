@@ -14,7 +14,24 @@ export default {
 			fontFamily: {
 				heading: ["'Oswald'", 'sans-serif'],
 				body: ["'Roboto'", 'sans-serif']
-			}
+      },
+
+      animation: {
+        'slide-up': 'slideUp 0.2s ease-out',
+      },
+
+      keyframes: {
+        slideUp: {
+          '0%': {
+            transform: 'translateY(100%)',
+            opacity: '0',
+          },
+          '100%': {
+            transform: 'translateY(0)',
+            opacity: '1',
+          },
+        },
+      },
     },
   },
   plugins: [],
