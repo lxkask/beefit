@@ -86,6 +86,7 @@
         startAutoSlide();
     });
 </script>
+
 <main>
     <!-- Hero Section -->
     <section class="hero bg-cover bg-center h-[80vh] w-full flex items-end" style="background-image: url({banner});">
@@ -98,10 +99,12 @@
             </p>
         </div>
     </section>
+
     <!-- Floating Button Section -->
     <section class="relative z-10">
         <div class="flex justify-center shadow-lg absolute -top-12 left-1/2 transform -translate-x-1/2 w-full max-w-xl">
             <!-- Button with Icon for Trainers -->
+=======
             <a href="/treneri" class="btn flex justify-center items-center rounded-l-lg bg-yellow text-dark font-body px-2 py-7 flex-grow text-center space-x-2 hover:bg-yellow_hover">
                 <img src="{person}" alt="Person Icon" class="w-8 h-8" />
                 <span>Trenéři</span>
@@ -219,6 +222,7 @@
             </div>
         </div>
     </section>
+
     <!-- Location Section -->
     <section class="location py-16 bg-grey">
         <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -233,17 +237,17 @@
                     Nusle - Praha 4
                 </p>
             </div>
+
             <!-- Map -->
-            <div>
+            <div class="flex justify-center mt-8 md:mt-0">
                 <iframe
                     src="https://maps.google.com/maps?q=BeeFIT&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                    class="w-2/3 h-72 rounded"
+                    class="w-full md:w-2/3 h-72 md:h-72 rounded"
                     frameborder="0"
                     title="BeeFIT Lokace"
                     allowfullscreen>
                 </iframe>
             </div>
         </div>
-        </section>
+    </section>
 </main>
-
