@@ -13,10 +13,10 @@
         </div>
 
         <!-- Kontakt: Grid layout s ikonami -->
-        <div class="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 px-6 text-left sm:text-left text-center">
+        <div class="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 px-6 sm:text-left text-center w-3/4">
             <!-- Telefon -->
-            <div class="flex flex-col sm:flex-row items-center sm:items-start space-y-2 sm:space-x-4 sm:space-y-0">
-                <img src={phone} alt="Telefon" class="w-6 h-6" />
+            <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-x-4 sm:space-y-0">
+                <img src={phone} alt="Telefon" class="w-8 h-8" />
                 <div>
                     <h3 class="text-yellow font-bold">Telefon</h3>
                     <p>733 60 60 02</p>
@@ -24,8 +24,8 @@
             </div>
 
             <!-- Email -->
-            <div class="flex flex-col sm:flex-row items-center sm:items-start space-y-2 sm:space-x-4 sm:space-y-0">
-                <img src={email} alt="Email" class="w-6 h-6" />
+            <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-x-4 sm:space-y-0">
+                <img src={email} alt="Email" class="w-8 h-8" />
                 <div>
                     <h3 class="text-yellow font-bold">Email</h3>
                     <p>info@beefit.cz</p>
@@ -33,8 +33,8 @@
             </div>
 
             <!-- Adresa -->
-            <div class="flex flex-col sm:flex-row items-center sm:items-start space-y-2 sm:space-x-4 sm:space-y-0">
-                <img src={map} alt="Adresa" class="w-6 h-6 filter invert" />
+            <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-x-4 sm:space-y-0">
+                <img src={map} alt="Adresa" class="w-8 h-8 filter invert" />
                 <div>
                     <h3 class="text-yellow font-bold">Adresa</h3>
                     <p>
@@ -45,9 +45,9 @@
             </div>
 
             <!-- Otevírací doba -->
-            <div class="flex flex-col sm:flex-row items-center sm:items-start space-y-2 sm:space-x-4 sm:space-y-0">
-                <img src={clock} alt="Otevírací doba" class="w-6 h-6 filter invert" />
-                <div>
+            <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-x-0 sm:space-y-0">
+                <img src={clock} alt="Otevírací doba" class="w-8 h-8 filter invert" />
+                <div class="sm:pl-3">
                     <h3 class="text-yellow font-bold">Otevírací doba</h3>
                     <p>
                         Pondělí - Pátek 7:00 - 22:00<br />
@@ -57,9 +57,11 @@
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Statutární údaje a mapa -->
-        <div class="container mx-auto mt-16 px-6 lg:w-2/3">
+    <!-- Statutární údaje a mapa -->
+    <section class="bg-grey text-white py-12">
+        <div class="container mx-auto px-6 lg:w-2/3">
             <!-- Nadpis uprostřed -->
             <div class="text-center mb-8">
                 <h2 class="text-2xl font-bold">Statutární údaje</h2>
@@ -87,6 +89,7 @@
                     </iframe>
                 </div>
             </div>
-        </div>
+         </div>
     </section>
+    
 </main>

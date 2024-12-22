@@ -13,7 +13,7 @@
         <div class="container mx-auto text-center">
             <h2 class="text-3xl font-bold font-heading mb-10">O BeeFIT</h2>
             <div class="flex justify-center">
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                     <!-- Info Item 1 -->
                     <div class="flex flex-col sm:flex-row items-center">
                         <div class="bg-yellow rounded-full p-4 flex items-center justify-center w-16 h-16">
@@ -110,7 +110,7 @@
     <section class="py-20 bg-grey">
         <div class="container mx-auto text-center">
             <h2 class="text-3xl font-bold font-heading mb-10 text-white">Vybavení</h2>
-            <div class="flex justify-center">
+            <div class="flex justify-center px-8 md:px-0">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                     <img src={gym1} alt="Gym Equipment 1" class="rounded" />
                     <img src={gym2} alt="Gym Equipment 2" class="rounded" />
