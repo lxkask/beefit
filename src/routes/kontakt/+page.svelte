@@ -9,7 +9,7 @@
     <section class="bg-black text-white py-12">
         <!-- Nadpis sekce -->
         <div class="container mx-auto text-center mb-12">
-            <h2 class="text-2xl font-bold mb-4">Kontakt</h2>
+            <h2 class="text-3xl font-bold mb-4 font-heading">Kontakt</h2>
         </div>
 
         <!-- Kontakt: Grid layout s ikonami -->
@@ -64,7 +64,7 @@
         <div class="container mx-auto px-6 lg:w-2/3">
             <!-- Nadpis uprostřed -->
             <div class="text-center mb-8">
-                <h2 class="text-2xl font-bold">Statutární údaje</h2>
+                <h2 class="text-3xl font-bold font-heading">Statutární údaje</h2>
             </div>
 
             <!-- Obsah: Texty a mapa -->
