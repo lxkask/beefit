@@ -1,7 +1,7 @@
 <main>
     <!-- Pricing Section -->
     <div class="justify-center flex">
-        <section class="py-10 bg-black text-white w-full md:w-1/2 flex items">
+        <section class="py-10 bg-black text-white w-4/5 md:w-3/4 lg:w-1/2 flex items">
             <div class="container mx-auto text-center">
                 <h2 class="text-3xl font-bold font-heading mb-10">Ceny vstupného</h2>
                 <div class="overflow-hidden">
@@ -71,8 +71,8 @@
     </div>
 
     <!-- Payment Methods Section -->
-    <div class="flex justify-center">
-        <section class="py-10 bg-black text-white w-full md:w-1/2">
+    <div class="flex justify-center bg-grey">
+        <section class="py-10 text-white w-4/5 md:w-1/2">
             <div class="container mx-auto">
                 <h3 class="text-3xl font-bold mb-6 text-center font-heading">Způsob platby</h3>
                 <ul class="list-disc list-inside text-lg space-y-2">
