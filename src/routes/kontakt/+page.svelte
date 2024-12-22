@@ -12,10 +12,10 @@
             <h2 class="text-2xl font-bold mb-4">Kontakt</h2>
         </div>
 
-        <!-- Kontakt: Flex layout s ikonami -->
-        <div class="container mx-auto flex flex-wrap justify-center gap-12 px-6  text-center md:text-left">
+        <!-- Kontakt: Grid layout s ikonami -->
+        <div class="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 px-6 text-left sm:text-left text-center">
             <!-- Telefon -->
-            <div class="flex-1 min-w-[200px] flex items-center space-x-4">
+            <div class="flex flex-col sm:flex-row items-center sm:items-start space-y-2 sm:space-x-4 sm:space-y-0">
                 <img src={phone} alt="Telefon" class="w-6 h-6" />
                 <div>
                     <h3 class="text-yellow font-bold">Telefon</h3>
@@ -24,7 +24,7 @@
             </div>
 
             <!-- Email -->
-            <div class="flex-1 min-w-[200px] flex items-center space-x-4">
+            <div class="flex flex-col sm:flex-row items-center sm:items-start space-y-2 sm:space-x-4 sm:space-y-0">
                 <img src={email} alt="Email" class="w-6 h-6" />
                 <div>
                     <h3 class="text-yellow font-bold">Email</h3>
@@ -33,8 +33,8 @@
             </div>
 
             <!-- Adresa -->
-            <div class="flex-1 min-w-[200px] flex items-center space-x-4 ">
-                <img src={map} alt="EMap" class="w-6 h-6 filter invert" />
+            <div class="flex flex-col sm:flex-row items-center sm:items-start space-y-2 sm:space-x-4 sm:space-y-0">
+                <img src={map} alt="Adresa" class="w-6 h-6 filter invert" />
                 <div>
                     <h3 class="text-yellow font-bold">Adresa</h3>
                     <p>
@@ -45,7 +45,7 @@
             </div>
 
             <!-- Otevírací doba -->
-            <div class="flex-1 min-w-[200px] flex items-center space-x-4">
+            <div class="flex flex-col sm:flex-row items-center sm:items-start space-y-2 sm:space-x-4 sm:space-y-0">
                 <img src={clock} alt="Otevírací doba" class="w-6 h-6 filter invert" />
                 <div>
                     <h3 class="text-yellow font-bold">Otevírací doba</h3>
@@ -66,7 +66,7 @@
             </div>
 
             <!-- Obsah: Texty a mapa -->
-            <div class="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-8">
+            <div class="flex flex-col lg:flex-row items-center lg:items-center justify-center gap-8">
                 <!-- Statutární údaje -->
                 <div class="lg:w-1/2 text-left space-y-2 max-w-[200px]">
                     <p>FIT-FAT s.r.o.</p>
