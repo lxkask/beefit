@@ -47,10 +47,10 @@
 
     // Start the automatic slide change
     const startAutoSlide = () => {
-        autoSlideTimer = setInterval(() => {
-            nextSlide();
-        }, 10000); // 7 seconds interval for auto-slide
-    };
+    autoSlideTimer = window.setInterval(() => {
+        nextSlide();
+    }, 10000); // 10 seconds interval for auto-slide
+};
 
     // Clear the existing timer when manual navigation is used
     const stopAutoSlide = () => {
