@@ -1,77 +1,37 @@
 <script>
-    import { sanityClient } from '$lib/sanityClient';
-
-    export async function load() {
-    try {
-        const query = `
-            *[_type == "priceTable"][0] {
-                title,
-                rows[] {
-                    type,
-                    allDay,
-                    workingHours,
-                    eveningWeekend
-                }
-            }
-        `;
-        const priceTable = await sanityClient.fetch(query);
-        console.log("Fetched priceTable:", priceTable); // Check what is returned
-        if (!priceTable) {
-            throw new Error("No priceTable data returned from Sanity.");
-        }
-        return { props: { priceTable } };
-    } catch (error) {
-        console.error("Error fetching priceTable:", error);
-        throw error;
-    }
-}
-
-    export let priceTable;
+  export let priceTable;
 </script>
 
-
 <main>
-    {#if priceTable}
+  {#if priceTable}
     <h2>{priceTable.title || "No title available"}</h2>
-    {#if priceTable.rows && priceTable.rows.length > 0}
-        <!-- Render rows -->
+    {#if priceTable.rows?.length > 0}
+      <table class="w-full text-left border-collapse border border-yellow table-fixed">
+        <thead>
+          <tr class="bg-yellow text-black">
+            <th class="border border-yellow p-2">Typ vstupu</th>
+            <th class="border border-yellow p-2">Celodenní</th>
+            <th class="border border-yellow p-2">Pracovní</th>
+            <th class="border border-yellow p-2">Večer + víkend</th>
+          </tr>
+        </thead>
+        <tbody>
+          {#each priceTable.rows as row}
+            <tr>
+              <td class="border border-yellow p-2">{row.type || "N/A"}</td>
+              <td class="border border-yellow p-2">{row.allDay || "N/A"}</td>
+              <td class="border border-yellow p-2">{row.workingHours || "N/A"}</td>
+              <td class="border border-yellow p-2">{row.eveningWeekend || "N/A"}</td>
+            </tr>
+          {/each}
+        </tbody>
+      </table>
     {:else}
-        <p>No pricing data available.</p>
+      <p>No pricing data available.</p>
     {/if}
-    {:else}
-        <p>Loading...</p>
-    {/if}
-
-    <!-- Pricing Section --> 
-      <div class="justify-center flex">
-        <section class="py-10 bg-black text-white w-4/5 md:w-3/4 lg:w-1/2 flex items">
-          <div class="container mx-auto text-center">
-            <h2 class="text-3xl font-bold font-heading mb-10">{priceTable.title}</h2>
-            <div class="overflow-hidden">
-              <table class="w-full text-left border-collapse border border-yellow table-fixed">
-                <thead>
-                  <tr class="bg-yellow text-black">
-                    <th class="border border-yellow p-2">Typ vstupu</th>
-                    <th class="border border-yellow p-2">Celodenní</th>
-                    <th class="border border-yellow p-2">Pracovní</th>
-                    <th class="border border-yellow p-2">Večer + víkend</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {#each priceTable.rows as row}
-                    <tr>
-                      <td class="border border-yellow p-2">{row.type}</td>
-                      <td class="border border-yellow p-2">{row.allDay}</td>
-                      <td class="border border-yellow p-2">{row.workingHours}</td>
-                      <td class="border border-yellow p-2">{row.eveningWeekend}</td>
-                    </tr>
-                  {/each}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </section>
-      </div>
+  {:else}
+    <p>Loading...</p>
+  {/if}
       
 
     <!-- Payment Methods Section -->
