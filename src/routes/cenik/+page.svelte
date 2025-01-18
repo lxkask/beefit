@@ -1,5 +1,15 @@
-<script>
-  export let priceTable;
+<script lang="ts">
+  export let priceTable: {
+    title: string;
+    rows: {
+      type: string;
+      allDay: string;
+      workingHours: string;
+      eveningWeekend: string;
+    }[];
+  } | undefined;
+
+  console.log("PriceTable in Svelte:", priceTable); // Debug log
 </script>
 
 <main>
