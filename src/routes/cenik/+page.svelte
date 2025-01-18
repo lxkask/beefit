@@ -1,74 +1,38 @@
+<script>
+  export let priceTable;
+</script>
+
 <main>
-    <!-- Pricing Section -->
-    <div class="justify-center flex">
-        <section class="py-10 bg-black text-white w-4/5 md:w-3/4 lg:w-1/2 flex items">
-            <div class="container mx-auto text-center">
-                <h2 class="text-3xl font-bold font-heading mb-10">Ceny vstupného</h2>
-                <div class="overflow-hidden">
-                    <table class="w-full text-left border-collapse border border-yellow table-fixed">
-                        <thead>
-                            <tr class="bg-yellow text-black">
-                                <th class="border border-yellow p-2">Typ vstupu</th>
-                                <th class="border border-yellow p-2">Celodenní <br />7:00 - 22:00</th>
-                                <th class="border border-yellow p-2">Pracovní <br />8:00 - 16:00</th>
-                                <th class="border border-yellow p-2">Večer + víkend <br />19:30 - 22:00</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="border border-yellow p-2">Jednorázový vstup</td>
-                                <td class="border border-yellow p-2">150 Kč</td>
-                                <td class="border border-yellow p-2">150 Kč</td>
-                                <td class="border border-yellow p-2">150 Kč</td>
-                            </tr>
-                            <tr>
-                                <td class="border border-yellow p-2">12 měsíců</td>
-                                <td class="border border-yellow p-2">1 500 Kč</td>
-                                <td class="border border-yellow p-2">1 200 Kč</td>
-                                <td class="border border-yellow p-2">900 Kč</td>
-                            </tr>
-                            <tr>
-                                <td class="border border-yellow p-2">12 měsíců</td>
-                                <td class="border border-yellow p-2">1 500 Kč</td>
-                                <td class="border border-yellow p-2">1 200 Kč</td>
-                                <td class="border border-yellow p-2">900 Kč</td>
-                            </tr>
-                            <tr>
-                                <td class="border border-yellow p-2">12 měsíců</td>
-                                <td class="border border-yellow p-2">1 500 Kč</td>
-                                <td class="border border-yellow p-2">1 200 Kč</td>
-                                <td class="border border-yellow p-2">900 Kč</td>
-                            </tr>
-                            <tr>
-                                <td class="border border-yellow p-2">12 měsíců</td>
-                                <td class="border border-yellow p-2">1 500 Kč</td>
-                                <td class="border border-yellow p-2">1 200 Kč</td>
-                                <td class="border border-yellow p-2">900 Kč</td>
-                            </tr>
-                            <tr>
-                                <td class="border border-yellow p-2">12 měsíců</td>
-                                <td class="border border-yellow p-2">1 500 Kč</td>
-                                <td class="border border-yellow p-2">1 200 Kč</td>
-                                <td class="border border-yellow p-2">900 Kč</td>
-                            </tr>
-                            <tr>
-                                <td class="border border-yellow p-2">12 měsíců</td>
-                                <td class="border border-yellow p-2">1 500 Kč</td>
-                                <td class="border border-yellow p-2">1 200 Kč</td>
-                                <td class="border border-yellow p-2">900 Kč</td>
-                            </tr>
-                            <tr>
-                                <td class="border border-yellow p-2">12 měsíců</td>
-                                <td class="border border-yellow p-2">1 500 Kč</td>
-                                <td class="border border-yellow p-2">1 200 Kč</td>
-                                <td class="border border-yellow p-2">900 Kč</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-    </div>
+  {#if priceTable}
+    <h2>{priceTable.title || "No title available"}</h2>
+    {#if priceTable.rows?.length > 0}
+      <table class="w-full text-left border-collapse border border-yellow table-fixed">
+        <thead>
+          <tr class="bg-yellow text-black">
+            <th class="border border-yellow p-2">Typ vstupu</th>
+            <th class="border border-yellow p-2">Celodenní</th>
+            <th class="border border-yellow p-2">Pracovní</th>
+            <th class="border border-yellow p-2">Večer + víkend</th>
+          </tr>
+        </thead>
+        <tbody>
+          {#each priceTable.rows as row}
+            <tr>
+              <td class="border border-yellow p-2">{row.type || "N/A"}</td>
+              <td class="border border-yellow p-2">{row.allDay || "N/A"}</td>
+              <td class="border border-yellow p-2">{row.workingHours || "N/A"}</td>
+              <td class="border border-yellow p-2">{row.eveningWeekend || "N/A"}</td>
+            </tr>
+          {/each}
+        </tbody>
+      </table>
+    {:else}
+      <p>No pricing data available.</p>
+    {/if}
+  {:else}
+    <p>Loading...</p>
+  {/if}
+      
 
     <!-- Payment Methods Section -->
     <div class="flex justify-center bg-grey">
