@@ -7,41 +7,51 @@
 </script>
 
 <footer class="bg-[#121212] text-white py-10">
-    <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-      <!-- Logo and Slogan -->
-      <div class="flex flex-col items-center justify-center">
-        <img src={logo} alt="BeeFIT Logo" class="w-32 mb-4" />
-      </div>
-  
-      <!-- Contact Info -->
-      <div class="flex flex-col space-y-2 font-body justify-center">
-        <div class="flex items-center">
-          <img src={phone} alt="Phone Icon" class="w-11 h-11 mr-2" />
-          <p class="flex flex-col"><span class="text-yellow">Telefon</span> 733 60 60 02</p>
+    <div class="max-w-screen-xl mx-auto px-4 lg:px-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <!-- Logo and Slogan -->
+        <div class="flex flex-col items-center lg:items-start">
+            <img src={logo} alt="BeeFIT Logo" class="w-32 mb-4" />
         </div>
-        <div class="flex items-center">
-          <img src={email} alt="Email Icon" class="w-10 h-10 mr-3" />
-          <p class="flex flex-col"><span class="text-yellow">Email</span> info@beefit.cz</p>
+
+        <!-- Contact Info -->
+        <div class="flex flex-col items-center lg:items-start space-y-4">
+            <div class="flex items-center">
+                <img src={phone} alt="Phone Icon" class="w-11 h-11 mr-2" />
+                <p class="flex flex-col">
+                    <span class="text-yellow">Telefon</span>
+                    733 60 60 02
+                </p>
+            </div>
+            <div class="flex items-center">
+                <img src={email} alt="Email Icon" class="w-10 h-10 mr-3" />
+                <p class="flex flex-col">
+                    <span class="text-yellow">Email</span>
+                    info@beefit.cz
+                </p>
+            </div>
         </div>
-      </div>
-  
-      <!-- Navigation Links & Social Media -->
-      <div class="flex md:items-center space-x-20">
-        <nav class="space-y-1 flex flex-col">
-          <a href="/posilovna" class="hover:text-yellow-400">Posilovna</a>
-          <a href="/cenik" class="hover:text-yellow-400">Ceník</a>
-          <a href="/treneri" class="hover:text-yellow-400">Trenéři</a>
-          <a href="/rozvrh" class="hover:text-yellow-400">Rozvrh lekcí</a>
-          <a href="/kontakt" class="hover:text-yellow-400">Kontakt</a>
-        </nav>
-        <div class="flex space-x-4 mt-4 items-center">
-          <a href="https://instagram.com/kralova_music/" target="_blank" rel="noopener noreferrer">
-            <img src={instagram} alt="Instagram" class="w-12 h-12 hover:opacity-75" />
-          </a>
-          <a href="https://facebook.com/kralovamusic" target="_blank" rel="noopener noreferrer">
-            <img src={facebook} alt="Facebook" class="w-8 h-6 hover:opacity-75" />
-          </a>
+
+        <!-- Navigation Links -->
+        <div class="flex flex-col items-center lg:items-start">
+            <nav class="space-y-2">
+                <a href="/posilovna" class="hover:text-yellow-400 block">Posilovna</a>
+                <a href="/cenik" class="hover:text-yellow-400 block">Ceník</a>
+                <a href="/treneri" class="hover:text-yellow-400 block">Trenéři</a>
+                <a href="/rozvrh" class="hover:text-yellow-400 block">Rozvrh lekcí</a>
+                <a href="/kontakt" class="hover:text-yellow-400 block">Kontakt</a>
+            </nav>
         </div>
-      </div>
+
+        <!-- Social Media -->
+        <div class="flex flex-col items-center lg:items-start">
+            <div class="flex space-x-4">
+                <a href="https://instagram.com/kralova_music/" target="_blank" rel="noopener noreferrer">
+                    <img src={instagram} alt="Instagram" class="w-14 h-14 hover:opacity-75" />
+                </a>
+                <a href="https://facebook.com/kralovamusic" target="_blank" rel="noopener noreferrer">
+                    <img src={facebook} alt="Facebook" class="w-10 h-8 hover:opacity-75 mt-3" />
+                </a>
+            </div>
+        </div>
     </div>
 </footer>
