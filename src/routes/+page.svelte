@@ -1,10 +1,10 @@
 <script lang="ts">
-    import banner from '../lib/images/banner.jpg';
-    import equipment from '../lib/images/equipment.png';
-    import equipment2 from '../lib/images/equipment2.jpg';
-    import equipment3 from '../lib/images/equipment3.jpg';
-    import equipment4 from '../lib/images/equipment4.jpg';
-    import equipment5 from '../lib/images/equipment5.jpg';
+    import banner from '../lib/images/banner.webp';
+    import equipment from '../lib/images/equipment.webp';
+    import equipment2 from '../lib/images/equipment2.webp';
+    import equipment3 from '../lib/images/equipment3.webp';
+    import equipment4 from '../lib/images/equipment4.webp';
+    import equipment5 from '../lib/images/equipment5.webp';
     import clock from '../lib/images/clock-icon.svg';
     import person from '../lib/images/person-icon.svg';
     import pricetag from '../lib/images/pricetag-icon.svg';
@@ -206,7 +206,7 @@
                 <div class="absolute bottom-1 left-1/2 transform -translate-x-1/2 flex space-x-2">
                     {#each slides as _, index}
                         <button
-                            class="w-2.5 h-2.5 bg-white rounded-full cursor-pointer focus:outline-none"
+                            class="w-5 h-5 bg-white rounded-full cursor-pointer focus:outline-none"
                             class:bg-yellow={index === currentIndex}
                             on:click={() => updateSlide(index)}
                             aria-label={`Slide ${index + 1}`}
