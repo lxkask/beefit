@@ -6,7 +6,7 @@
         { href: '/rozvrh', label: 'Rozvrh lekcí' },
         { href: '/kontakt', label: 'Kontakt' },
     ];
-    import logo from '../images/logo.png';
+    import logo from '../images/logo.webp';
     let isMenuOpen = false;
 
     // Function to close the menu when a link is clicked
@@ -19,7 +19,7 @@
     <div class="container mx-auto flex items-center justify-between w-5/6">
         <!-- Logo -->
         <a href="/">
-            <img src={logo} alt="Logo" class="h-14" />
+            <img src={logo} alt="Logo" class="h-14 w-24" />
         </a>
 
         <!-- Hamburger Menu Icon -->

@@ -1,8 +1,8 @@
 <script>
-    import gym1 from '../../lib/images/gym1.jpg';
-    import gym2 from '../../lib/images/gym2.jpg';
-    import lounge from '../../lib/images/lounge.jpg';
-    import locker from '../../lib/images/locker.jpg';
+    import gym1 from '../../lib/images/gym1.webp';
+    import gym2 from '../../lib/images/gym2.webp';
+    import lounge from '../../lib/images/lounge.webp';
+    import locker from '../../lib/images/locker.webp';
     import area from '../../lib/images/area-icon.svg';
     import parking from '../../lib/images/parking-icon.svg';
 </script>

@@ -1,5 +1,5 @@
 <script>
-    import logo from '../images/logo.png';
+    import logo from '../images/logo.webp';
     import phone from '../images/phone-icon.svg';
     import email from '../images/email-icon.svg';
     import facebook from '../images/facebook-icon.svg';
@@ -10,7 +10,7 @@
     <div class="max-w-screen-xl mx-auto px-4 lg:px-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
         <!-- Logo and Slogan -->
         <div class="flex flex-col items-center lg:items-start">
-            <img src={logo} alt="BeeFIT Logo" class="w-32 mb-4" />
+            <img src={logo} alt="BeeFIT Logo" class="w-32 h-18 mb-4" />
         </div>
 
         <!-- Contact Info -->
