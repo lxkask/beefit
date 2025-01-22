@@ -21,26 +21,31 @@
         {
             image: equipment,
             title: 'Rodinné prostředí',
+            altText: 'First equipment photo',
             description: 'U nás se nemusíte bát, že se ztratíte v davu. Každý je u nás vítán, ať už začínáte, nebo cvičíte pravidelně.'
         },
         {
             image: equipment2,
             title: 'Členství bez závazků a bez poplatků',
+            altText: 'Second equipment photo',
             description: 'Transparentnost je pro nás zásadní, proto u nás nenajdete žádné zbytečné poplatky za sprchu; půjčení klíčku ke skříňkám, aj.'
         },
         {
             image: equipment3,
             title: 'Profesionální trenéři a individuální přístup',
+            altText: 'Third equipment photo',
             description: 'Náš tým zkušených trenérů vám pomůže dosáhnout vašich cílů, ať už je to zlepšení kondice, posílení těla nebo regenerace po zranění.'
         },
         {
             image: equipment4,
             title: 'Moderní vybavení a příjemné prostředí',
+            altText: 'Fourth equipment photo',
             description: 'Prostor a vybavení, které vás budou bavit. Ať už máte rádi kardio, posilování nebo funkční trénink, u nás najdete všechno, co potřebujete, a navíc ve stylovém, čistém a komfortním prostředí.'
         },
         {
             image: equipment5,
             title: 'Dostupné ceny',
+            altText: 'Fifth quipment photo',
             description: 'Naším cílem je, aby kvalitní fitness bylo dostupné pro každého, proto u nás najdete ceny nižší než ve většině běžných fitness center.'
         }
     ];
@@ -89,7 +94,7 @@
 
 <main>
     <!-- Hero Section -->
-    <section class="hero bg-cover bg-center md:h-[80vh] h-[60vh] w-full flex md:items-end items-end" style="background-image: url({banner});">
+    <section class="hero bg-cover bg-center md:h-[80vh] h-[60vh] w-full flex md:items-end items-end " style="background-image: url({banner});">
         <div class="container mx-auto md:py-32 md:px-32 py-32 px-16">
             <h1 class="md:text-5xl text-3xl font-bold text-white font-heading">Fitness BeeFIT</h1>
             <p class="md:text-xl text-lg mt-4 text-white font-body w-full md:w-2/5">
@@ -170,7 +175,7 @@
                         <div class="flex-shrink-0 w-full flex flex-col lg:flex-row items-center gap-8 px-16 mb-10 bg-black text-white">
                             <!-- Image Container -->
                             <div class="w-full lg:w-1/2 h-72 lg:h-96">
-                                <img src={slide.image} alt={slide.title} class="w-full h-full object-cover rounded" />
+                                <img src={slide.image} alt={slide.altText} class="w-full h-full object-cover rounded" />
                             </div>
 
                             <!-- Text Content -->
