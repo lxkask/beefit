@@ -19,7 +19,7 @@
     <div class="container mx-auto flex items-center justify-between w-5/6">
         <!-- Logo -->
         <a href="/">
-            <img src={logo} alt="Logo" class="h-14 w-24" />
+            <img src={logo} alt="BeeFIT Logo" class="h-14 w-24" />
         </a>
 
         <!-- Hamburger Menu Icon -->

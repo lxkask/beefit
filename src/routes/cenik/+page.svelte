@@ -1,20 +1,11 @@
-<script lang="ts">
-  export let priceTable: {
-    title: string;
-    rows: {
-      type: string;
-      allDay: string;
-      workingHours: string;
-      eveningWeekend: string;
-    }[];
-  } | undefined;
-
-  console.log("PriceTable in Svelte:", priceTable); // Debug log
+<script>
+  export let data;
+  const priceTable = data.priceTable;
 </script>
 
 <main>
   {#if priceTable}
-    <h2>{priceTable.title || "No title available"}</h2>
+    <h2>{priceTable.title || 'No title available'}</h2>
     {#if priceTable.rows?.length > 0}
       <table class="w-full text-left border-collapse border border-yellow table-fixed">
         <thead>
@@ -27,11 +18,11 @@
         </thead>
         <tbody>
           {#each priceTable.rows as row}
-            <tr>
-              <td class="border border-yellow p-2">{row.type || "N/A"}</td>
-              <td class="border border-yellow p-2">{row.allDay || "N/A"}</td>
-              <td class="border border-yellow p-2">{row.workingHours || "N/A"}</td>
-              <td class="border border-yellow p-2">{row.eveningWeekend || "N/A"}</td>
+            <tr class="text-white">
+              <td class="border border-yellow p-2">{row.type || 'N/A'}</td>
+              <td class="border border-yellow p-2">{row.allDay || 'N/A'}</td>
+              <td class="border border-yellow p-2">{row.workingHours || 'N/A'}</td>
+              <td class="border border-yellow p-2">{row.eveningWeekend || 'N/A'}</td>
             </tr>
           {/each}
         </tbody>
@@ -42,6 +33,7 @@
   {:else}
     <p>Loading...</p>
   {/if}
+
       
 
     <!-- Payment Methods Section -->
