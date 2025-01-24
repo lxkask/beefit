@@ -90,6 +90,24 @@
     onMount(() => {
         startAutoSlide();
     });
+
+    let reviews = [
+    {
+      name: "Kateřina M.",
+      text: "Malé útulné fitness, kde se člověk dokáže docela zničit a odchází spokojený se svým výkonem.",
+      rating: 5
+    },
+    {
+      name: "Olga P.",
+      text: "Byla jsem zde i s dcerou. Hezky jsme si v rodinném fitku zacvičily, bylo zde příjemné denní světlo a velmi dobře fungovala klimatizace. Zase obě přijdem.",
+      rating: 5
+    },
+    {
+      name: "Tom Brown",
+      text: "Dobré vybavení, relativně menší počet lidí a hlavně mód vstupu, který nenutí ke členství a omezení člověka jen na jedno místo ke cvičení.",
+      rating: 5
+    }
+  ];    
 </script>
 
 <main>
@@ -163,7 +181,7 @@
         </div>
     {/if}
     <!-- Equipment Section -->
-    <section class="equipment py-28 bg-black">
+    <section class="equipment py-24 bg-grey">
         <div class="relative">
             <!-- Slideshow Container -->
             <div class="relative overflow-hidden w-full mx-auto max-w-screen-lg ">
@@ -172,7 +190,7 @@
                     style="transform: translateX(-{currentIndex * 100}%)"
                 >
                     {#each slides as slide, index}
-                        <div class="flex-shrink-0 w-full flex flex-col lg:flex-row items-center gap-8 px-16 mb-10 bg-black text-white">
+                        <div class="flex-shrink-0 w-full flex flex-col lg:flex-row items-center gap-8 px-16 mb-10 bg-grey text-white">
                             <!-- Image Container -->
                             <div class="w-full lg:w-1/2 h-72 lg:h-96">
                                 <img src={slide.image} alt={slide.altText} class="w-full h-full object-cover rounded" />
@@ -208,7 +226,7 @@
                 </button>
 
                 <!-- Navigation Dots -->
-                <div class="absolute bottom-1 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 flex space-x-2">
                     {#each slides as _, index}
                         <button
                             class="w-5 h-5 bg-white rounded-full cursor-pointer focus:outline-none"
@@ -223,14 +241,39 @@
         </div>
     </section>
 
+    <section class="bg-black py-12" id="reviews">
+        <div class="container mx-auto px-4 text-white w-full lg:w-5/6">
+          <h2 class="text-3xl font-bold text-center mb-8">Reference</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {#each reviews as review}
+              <div class="bg-grey shadow-lg rounded-lg p-6">
+                <div class="flex items-center mb-4">
+                  <div class="w-12 h-12 bg-yellow text-black rounded-full flex items-center justify-center font-bold">
+                    {review.name[0]}
+                  </div>
+                  <div class="ml-4">
+                    <h3 class="font-bold">{review.name}</h3>
+                    <p class="text-sm">
+                      {"★".repeat(review.rating)}{"☆".repeat(5 - review.rating)}
+                    </p>
+                  </div>
+                </div>
+                <p class="">{review.text}</p>
+              </div>
+            {/each}
+          </div>
+        </div>
+      </section>
+
     <!-- Location Section -->
-    <section class="location py-16 md:pl-6 bg-grey">
+    <section class="py-16 md:pl-6 bg-grey">
         <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
             <!-- Address -->
             <div class="mx-auto flex flex-col justify-center px-10 md:px-0">
                 <h3 class="text-3xl text-white font-heading font-bold">Na Hřebenech II 1718/10</h3>
                 <p class="mt-4 text-white font-body text-xl">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    BeeFIT se nachází 12 minut pěšky<br> 
+                    od stanice metra Pražského povstání
                 </p>
                 <p class="mt-4 text-white font-body text-xl">
                     Na Hřebenech II 1718/10<br>
