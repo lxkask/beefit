@@ -1,5 +1,4 @@
 <script lang="ts">
-    import banner from '../lib/images/banner.webp';
     import equipment from '../lib/images/equipment.webp';
     import equipment2 from '../lib/images/equipment2.webp';
     import equipment3 from '../lib/images/equipment3.webp';
@@ -10,6 +9,7 @@
     import pricetag from '../lib/images/pricetag-icon.svg';
     import { createDialog, melt } from '@melt-ui/svelte';
     import bannerVideo from '../lib/videos/bannerVid.webm';
+    import ReviewsCarousel from '../lib/components/ReviewsCarousel.svelte';
 
     const {
         elements: { trigger, portalled, overlay, content, title, description, close },
@@ -113,7 +113,7 @@
 
 <main>
     <!-- Hero Section -->
-    <section class="hero relative md:h-[80vh] h-[60vh] w-full flex md:items-end items-end">
+    <section class="hero relative md:h-[75vh] h-[60vh] w-full flex md:items-end items-end">
         <!-- Video Background -->
         <video autoplay muted loop playsinline disablePictureInPicture class="absolute top-0 left-0 w-full h-full object-cover">
             <source src="{bannerVideo}" type="video/mp4" />
@@ -124,8 +124,8 @@
         <div class="absolute inset-0 bg-black bg-opacity-50"></div>
     
         <!-- Text Content -->
-        <div class="container relative z-10 mx-auto md:py-32 md:px-32 py-32 px-16">
-            <div class="inline-block bg-black bg-opacity-60 p-4 rounded-lg">
+        <div class="container relative z-10 mx-auto md:py-20 md:px-16 py-16 px-16">
+            <div class="inline-block bg-black bg-opacity-60 p-4 rounded-lg w-1/2">
                 <h1 class="md:text-5xl text-3xl font-bold text-white font-heading">Fitness BeeFIT</h1>
                 <p class="md:text-xl text-lg mt-4 text-white font-body">
                     Vítejte v BeeFit! Od roku 2015 pomáháme dosáhnout fitness cílů v přátelské atmosféře s moderním vybavením, 
@@ -253,29 +253,7 @@
         </div>
     </section>
 
-    <section class="bg-black py-12" id="reviews">
-        <div class="container mx-auto px-4 text-white w-full lg:w-5/6">
-          <h2 class="text-3xl font-bold text-center mb-8">Reference</h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {#each reviews as review}
-              <div class="bg-grey shadow-lg rounded-lg p-6">
-                <div class="flex items-center mb-4">
-                  <div class="w-12 h-12 bg-yellow text-black rounded-full flex items-center justify-center font-bold">
-                    {review.name[0]}
-                  </div>
-                  <div class="ml-4">
-                    <h3 class="font-bold">{review.name}</h3>
-                    <p class="text-sm">
-                      {"★".repeat(review.rating)}{"☆".repeat(5 - review.rating)}
-                    </p>
-                  </div>
-                </div>
-                <p class="">{review.text}</p>
-              </div>
-            {/each}
-          </div>
-        </div>
-      </section>
+    <ReviewsCarousel />
 
     <!-- Location Section -->
     <section class="py-16 md:pl-6 bg-grey">
