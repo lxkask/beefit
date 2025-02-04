@@ -4,36 +4,39 @@
 </script>
 
 <main>
-  {#if priceTable}
-    <h2>{priceTable.title || 'No title available'}</h2>
-    {#if priceTable.rows?.length > 0}
-      <table class="w-full text-left border-collapse border border-yellow table-fixed">
-        <thead>
-          <tr class="bg-yellow text-black">
-            <th class="border border-yellow p-2">Typ vstupu</th>
-            <th class="border border-yellow p-2">Celodenní</th>
-            <th class="border border-yellow p-2">Pracovní</th>
-            <th class="border border-yellow p-2">Večer + víkend</th>
-          </tr>
-        </thead>
-        <tbody>
-          {#each priceTable.rows as row}
-            <tr class="text-white">
-              <td class="border border-yellow p-2">{row.type || 'N/A'}</td>
-              <td class="border border-yellow p-2">{row.allDay || 'N/A'}</td>
-              <td class="border border-yellow p-2">{row.workingHours || 'N/A'}</td>
-              <td class="border border-yellow p-2">{row.eveningWeekend || 'N/A'}</td>
+  <div class="flex justify-center">
+    <section class="w-4/5 md:w-3/4 lg:w-2/3 justify-center flex flex-col py-10">
+    {#if priceTable}
+      <h2 class="text-white text-3xl font-bold mb-6 text-center font-heading">{priceTable.title || 'No title available'}</h2>
+      {#if priceTable.rows?.length > 0}
+        <table class="w-full text-left border-collapse border border-yellow table-fixed">
+          <thead>
+            <tr class="bg-yellow text-black">
+              <th class="border border-yellow p-2">Typ vstupu</th>
+              <th class="border border-yellow p-2">Celodenní</th>
+              <th class="border border-yellow p-2">Pracovní</th>
+              <th class="border border-yellow p-2">Večer + víkend</th>
             </tr>
-          {/each}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {#each priceTable.rows as row}
+              <tr class="text-white">
+                <td class="border border-yellow p-2">{row.type || 'N/A'}</td>
+                <td class="border border-yellow p-2">{row.allDay || 'N/A'}</td>
+                <td class="border border-yellow p-2">{row.workingHours || 'N/A'}</td>
+                <td class="border border-yellow p-2">{row.eveningWeekend || 'N/A'}</td>
+              </tr>
+            {/each}
+          </tbody>
+        </table>
+      {:else}
+        <p>No pricing data available.</p>
+      {/if}
     {:else}
-      <p>No pricing data available.</p>
+      <p>Loading...</p>
     {/if}
-  {:else}
-    <p>Loading...</p>
-  {/if}
-
+    </section>
+  </div>
       
 
     <!-- Payment Methods Section -->
@@ -54,14 +57,13 @@
 </main>
 
 <style>
-    /* Na menších obrazovkách uprav velikost a vzhled tabulky */
     @media (max-width: 640px) {
         table {
-            font-size: 12px; /* Zmenšení písma pro lepší přehlednost */
-            table-layout: fixed; /* Umožní přizpůsobení sloupců */
+            font-size: 12px;
+            table-layout: fixed;
         }
         th, td {
-            word-wrap: break-word; /* Povolí zalamování textu ve sloupcích */
+            word-wrap: break-word;
         }
     }
 </style>
