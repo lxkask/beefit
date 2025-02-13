@@ -8,7 +8,7 @@
 
 <Navbar />
 
-<main>
+<main class="mt-20">
 	{@render children()}
 </main>
 

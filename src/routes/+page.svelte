@@ -111,7 +111,7 @@
   ];    
 </script>
 
-<main class="mt-20">
+<main>
     <!-- Hero Section -->
     <section class="hero relative md:h-[75vh] h-[60vh] w-full flex md:items-end items-end">
         <!-- Video Background -->
