@@ -125,7 +125,7 @@
     
         <!-- Text Content -->
         <div class="container relative z-10 mx-auto md:py-20 md:px-16 py-16 px-16">
-            <div class="inline-block bg-black bg-opacity-60 p-4 rounded-lg w-1/2">
+            <div class="inline-block bg-black bg-opacity-60 p-4 rounded-lg md:w-1/2">
                 <h1 class="md:text-5xl text-3xl font-bold text-white font-heading">Fitness BeeFIT</h1>
                 <p class="md:text-xl text-lg mt-4 text-white font-body">
                     Vítejte v BeeFit! Od roku 2015 pomáháme dosáhnout fitness cílů v přátelské atmosféře s moderním vybavením, 

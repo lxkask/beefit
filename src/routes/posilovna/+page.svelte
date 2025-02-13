@@ -140,12 +140,16 @@
             <div class="flex justify-center px-8 md:px-0">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {#each [gym1, gym2, lounge, locker] as image, index}
+                    <button 
+                        class="focus:outline-none"
+                        on:click={() => openGallery(index)}
+                    >
                         <img 
                             src={image} 
                             alt="Gym Equipment {index + 1}" 
-                            class="rounded cursor-pointer transition-transform duration-300 transform hover:scale-105 hover:brightness-75"
-                            on:click={() => openGallery(index)}
+                            class="rounded transition-transform duration-300 transform hover:scale-105 hover:brightness-75"
                         />
+                    </button>
                     {/each}
                 </div>
             </div>
