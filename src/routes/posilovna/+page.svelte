@@ -161,7 +161,7 @@
                 <button class="absolute top-4 right-4 text-white text-3xl" on:click={closeGallery}>×</button>
                 <button class="absolute top-1/2 md:left-20 left-2 transform -translate-y-1/2 text-black bg-yellow rounded-3xl px-5 pt-3 pb-5 hover:bg-yellow_hover text-5xl z-10" on:click={prevImage}>‹</button>
     
-                <img src={images[currentImage]} alt="Gallery Image" class="max-h-screen max-w-screen w-1/2" />
+                <img src={images[currentImage]} alt={`Gallery image ${currentImage + 1} of ${images.length}`} class="max-h-screen max-w-screen w-1/2" />
     
                 <button class="absolute top-1/2 md:right-20 right-2 transform -translate-y-1/2 text-black bg-yellow rounded-3xl px-5 pt-3 pb-5 hover:bg-yellow_hover text-5xl z-10" on:click={nextImage}>›</button>
             </div>
