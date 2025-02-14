@@ -1,5 +1,4 @@
 <script lang="ts">
-    import banner from '../lib/images/banner.webp';
     import equipment from '../lib/images/equipment.webp';
     import equipment2 from '../lib/images/equipment2.webp';
     import equipment3 from '../lib/images/equipment3.webp';
@@ -9,6 +8,8 @@
     import person from '../lib/images/person-icon.svg';
     import pricetag from '../lib/images/pricetag-icon.svg';
     import { createDialog, melt } from '@melt-ui/svelte';
+    import bannerVideo from '../lib/videos/bannerVid.webm';
+    import ReviewsCarousel from '../lib/components/ReviewsCarousel.svelte';
 
     const {
         elements: { trigger, portalled, overlay, content, title, description, close },
@@ -21,26 +22,31 @@
         {
             image: equipment,
             title: 'Rodinné prostředí',
+            altText: 'First equipment photo',
             description: 'U nás se nemusíte bát, že se ztratíte v davu. Každý je u nás vítán, ať už začínáte, nebo cvičíte pravidelně.'
         },
         {
             image: equipment2,
             title: 'Členství bez závazků a bez poplatků',
+            altText: 'Second equipment photo',
             description: 'Transparentnost je pro nás zásadní, proto u nás nenajdete žádné zbytečné poplatky za sprchu; půjčení klíčku ke skříňkám, aj.'
         },
         {
             image: equipment3,
             title: 'Profesionální trenéři a individuální přístup',
+            altText: 'Third equipment photo',
             description: 'Náš tým zkušených trenérů vám pomůže dosáhnout vašich cílů, ať už je to zlepšení kondice, posílení těla nebo regenerace po zranění.'
         },
         {
             image: equipment4,
             title: 'Moderní vybavení a příjemné prostředí',
+            altText: 'Fourth equipment photo',
             description: 'Prostor a vybavení, které vás budou bavit. Ať už máte rádi kardio, posilování nebo funkční trénink, u nás najdete všechno, co potřebujete, a navíc ve stylovém, čistém a komfortním prostředí.'
         },
         {
             image: equipment5,
             title: 'Dostupné ceny',
+            altText: 'Fifth quipment photo',
             description: 'Naším cílem je, aby kvalitní fitness bylo dostupné pro každého, proto u nás najdete ceny nižší než ve většině běžných fitness center.'
         }
     ];
@@ -85,20 +91,49 @@
     onMount(() => {
         startAutoSlide();
     });
+
+    let reviews = [
+    {
+      name: "Kateřina M.",
+      text: "Malé útulné fitness, kde se člověk dokáže docela zničit a odchází spokojený se svým výkonem.",
+      rating: 5
+    },
+    {
+      name: "Olga P.",
+      text: "Byla jsem zde i s dcerou. Hezky jsme si v rodinném fitku zacvičily, bylo zde příjemné denní světlo a velmi dobře fungovala klimatizace. Zase obě přijdem.",
+      rating: 5
+    },
+    {
+      name: "Tom Brown",
+      text: "Dobré vybavení, relativně menší počet lidí a hlavně mód vstupu, který nenutí ke členství a omezení člověka jen na jedno místo ke cvičení.",
+      rating: 5
+    }
+  ];    
 </script>
 
 <main>
     <!-- Hero Section -->
-    <section class="hero bg-cover bg-center md:h-[80vh] h-[60vh] w-full flex md:items-end items-end" style="background-image: url({banner});">
-        <div class="container mx-auto md:py-32 md:px-32 py-32 px-16">
-            <h1 class="md:text-5xl text-3xl font-bold text-white font-heading">Fitness BeeFIT</h1>
-            <p class="md:text-xl text-lg mt-4 text-white font-body w-full md:w-2/5">
-                Vítejte v <span class="text-yellow">BeeFit</span>! Od roku 2015 pomáháme dosáhnout fitness cílů v 
-                <span class="text-yellow">přátelské</span> atmosféře s <span class="text-yellow">moderním</span> vybavením, 
-                <span class="text-yellow">skupinovými</span> lekcemi a <span class="text-yellow">certifikovanými</span> trenéry.
-            </p>
+    <section class="hero relative md:h-[75vh] h-[60vh] w-full flex md:items-end items-end">
+        <!-- Video Background -->
+        <video autoplay muted loop playsinline disablePictureInPicture class="absolute top-0 left-0 w-full h-full object-cover">
+            <source src="{bannerVideo}" type="video/mp4" />
+            Your browser does not support the video tag.
+        </video>
+    
+        <!-- Black Overlay -->
+        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+    
+        <!-- Text Content -->
+        <div class="container relative z-10 mx-auto md:py-20 md:px-16 py-16 px-16">
+            <div class="inline-block bg-black bg-opacity-60 p-4 rounded-lg md:w-1/2">
+                <h1 class="md:text-5xl text-3xl font-bold text-white font-heading">Fitness BeeFIT</h1>
+                <p class="md:text-xl text-lg mt-4 text-white font-body">
+                    Vítejte v BeeFit! Od roku 2015 pomáháme dosáhnout fitness cílů v přátelské atmosféře s moderním vybavením, 
+                    skupinovými lekcemi a certifikovanými trenéry.
+                </p>
+            </div>
         </div>
-    </section>
+    </section>    
 
     <!-- Floating Button Section -->
     <section class="relative z-10">
@@ -158,7 +193,7 @@
         </div>
     {/if}
     <!-- Equipment Section -->
-    <section class="equipment py-28 bg-black">
+    <section class="equipment py-24 bg-grey">
         <div class="relative">
             <!-- Slideshow Container -->
             <div class="relative overflow-hidden w-full mx-auto max-w-screen-lg ">
@@ -167,10 +202,10 @@
                     style="transform: translateX(-{currentIndex * 100}%)"
                 >
                     {#each slides as slide, index}
-                        <div class="flex-shrink-0 w-full flex flex-col lg:flex-row items-center gap-8 px-16 mb-10 bg-black text-white">
+                        <div class="flex-shrink-0 w-full flex flex-col lg:flex-row items-center gap-8 px-16 mb-10 bg-grey text-white">
                             <!-- Image Container -->
                             <div class="w-full lg:w-1/2 h-72 lg:h-96">
-                                <img src={slide.image} alt={slide.title} class="w-full h-full object-cover rounded" />
+                                <img src={slide.image} alt={slide.altText} class="w-full h-full object-cover rounded" />
                             </div>
 
                             <!-- Text Content -->
@@ -203,7 +238,7 @@
                 </button>
 
                 <!-- Navigation Dots -->
-                <div class="absolute bottom-1 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 flex space-x-2">
                     {#each slides as _, index}
                         <button
                             class="w-5 h-5 bg-white rounded-full cursor-pointer focus:outline-none"
@@ -218,14 +253,17 @@
         </div>
     </section>
 
+    <ReviewsCarousel />
+
     <!-- Location Section -->
-    <section class="location py-16 md:pl-6 bg-grey">
+    <section class="py-16 md:pl-6 bg-grey">
         <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
             <!-- Address -->
             <div class="mx-auto flex flex-col justify-center px-10 md:px-0">
                 <h3 class="text-3xl text-white font-heading font-bold">Na Hřebenech II 1718/10</h3>
                 <p class="mt-4 text-white font-body text-xl">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    BeeFIT se nachází 12 minut pěšky<br> 
+                    od stanice metra Pražského povstání
                 </p>
                 <p class="mt-4 text-white font-body text-xl">
                     Na Hřebenech II 1718/10<br>
