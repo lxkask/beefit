@@ -45,10 +45,10 @@
         <!-- Social Media -->
         <div class="flex flex-col items-center lg:items-start">
             <div class="flex space-x-4">
-                <a href="https://instagram.com/kralova_music/" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.instagram.com/beefit_prague/" target="_blank" rel="noopener noreferrer">
                     <img src={instagram} alt="Instagram" class="w-14 h-14 hover:opacity-75" />
                 </a>
-                <a href="https://facebook.com/kralovamusic" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.facebook.com/profile.php?id=100066436970231" target="_blank" rel="noopener noreferrer">
                     <img src={facebook} alt="Facebook" class="w-10 h-8 hover:opacity-75 mt-3" />
                 </a>
             </div>
