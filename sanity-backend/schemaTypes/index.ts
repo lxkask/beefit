@@ -1,3 +1,4 @@
 import priceTable from './priceTable';
+import paymentMethods from './paymentMethods';
 
-export const schemaTypes = [priceTable];
+export const schemaTypes = [priceTable, paymentMethods];
