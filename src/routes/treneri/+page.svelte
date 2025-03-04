@@ -5,30 +5,15 @@
     
     import { createDialog, melt } from '@melt-ui/svelte';
 
+    export let data;
+
     // Create a dialog instance
     const {
         elements: { trigger, portalled, overlay, content, title, close },
         states: { open }
     } = createDialog();
 
-    const trainers = [
-        {
-            name: 'Trenér 1',
-            image: '',
-            instagram: '@osobnitrener',
-            phone: '+420 777 777 777',
-            education: 'Certifikovaný trenér fitness',
-            specialization: 'Silový trénink, redukce váhy'
-        },
-        {
-            name: 'Trenér 1',
-            image: '',
-            instagram: '@osobnitrener',
-            phone: '+420 777 777 777',
-            education: 'Certifikovaný trenér fitness',
-            specialization: 'Silový trénink, redukce váhy'
-        },
-    ];
+    const trainers = data.trainers;
 </script>
 
 <main>
@@ -43,12 +28,20 @@
 
     <section class="pb-10 bg-grey text-white">
         <div class="container mx-auto space-y-12 md:space-y-24 px-4 bg-grey py-12">
-            {#each trainers as trainer}
-                <div class="flex flex-col md:flex-row justify-center items-center gap-12 md:gap-32">
-                    <div class="w-64 h-64 bg-gray-700 flex justify-center items-center mb-8 md:mb-0">
-                        <span class="text-6xl font-bold text-gray-500">?</span>
+            {#each trainers as trainer, index}
+                <div class="flex flex-col md:flex-row justify-center items-center gap-12 md:gap-32 
+                    {index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}">
+                    
+                    <!-- Trainer Photo -->
+                    <div class="w-64 h-64 bg-gray flex justify-center items-center mb-8 md:mb-0">
+                        {#if trainer.photo}
+                            <img src="{trainer.photo}" alt="{trainer.name}" class="w-full h-full object-cover rounded-full" />
+                        {:else}
+                            <span class="text-6xl font-bold text-gray-500">?</span>
+                        {/if}
                     </div>
 
+                    <!-- Trainer Info -->
                     <div class="flex flex-col justify-center text-center md:text-left">
                         <h3 class="text-2xl font-bold text-yellow-500 mb-4">{trainer.name}</h3>
                         <ul class="space-y-4 text-white mx-auto max-w-xs md:mx-0 text-xl">
@@ -56,15 +49,21 @@
                                 <img src={user} alt="User icon" class="mr-2 h-6 w-6" />
                                 Osobní trenér
                             </li>
-                            <li class="flex items-center">
-                                <img src={instagram} alt="Instagram icon" class="mr-2 h-5 w-5" />
-                                {trainer.instagram}
-                            </li>
-                            <li class="flex items-center">
-                                <img src={phone} alt="Phone icon" class="mr-2 h-5 w-5" />
-                                {trainer.phone}
-                            </li>
+                            {#if trainer.instagram}
+                                <li class="flex items-center">
+                                    <img src={instagram} alt="Instagram icon" class="mr-2 h-5 w-5" />
+                                    {trainer.instagram}
+                                </li>
+                            {/if}
+                            {#if trainer.phone}
+                                <li class="flex items-center">
+                                    <img src={phone} alt="Phone icon" class="mr-2 h-5 w-5" />
+                                    {trainer.phone}
+                                </li>
+                            {/if}
                         </ul>
+
+                        <!-- Button to Open Dialog -->
                         <button
                             class="mt-6 bg-yellow hover:bg-yellow_hover text-black font-bold py-2 px-6 rounded-lg w-auto mx-auto md:mx-0"
                             use:melt={$trigger}>
@@ -82,18 +81,28 @@
                         <!-- Dialog Content -->
                         <div use:melt={$content} class="fixed inset-0 flex items-center justify-center animate-slide-up z-10">
                             <div class="bg-black rounded-xl shadow-lg p-6 w-11/12 max-w-md">
-                                <!-- Dialog Title -->
                                 <h2 use:melt={$title} class="text-xl font-bold text-center mb-4 text-white">{trainer.name}</h2>
-                                
-                                <p class="text-white"><strong>Vzdělání:</strong> {trainer.education}</p>
-                                <p class="text-white"><strong>Specializace:</strong> {trainer.specialization}</p>
 
-                                <!-- Close Button -->
+                                {#if trainer.education}
+                                    <p class="text-white"><strong>Vzdělání:</strong> {trainer.education}</p>
+                                {/if}
+                                {#if trainer.specialization}
+                                    <p class="text-white"><strong>Specializace:</strong> {trainer.specialization}</p>
+                                {/if}
+                                {#if trainer.achievements}
+                                    <p class="text-white"><strong>Sportovní úspěchy:</strong> {trainer.achievements}</p>
+                                {/if}
+                                {#if trainer.hobbies}
+                                    <p class="text-white"><strong>Zájmy:</strong> {trainer.hobbies}</p>
+                                {/if}
+                                {#if trainer.contact}
+                                    <p class="text-white"><strong>Kontakt:</strong> {trainer.contact}</p>
+                                {/if}
+
                                 <div class="flex justify-center">
                                     <button 
                                         use:melt={$close} 
-                                        class="mt-6 w-1/2 bg-yellow text-dark font-body py-2 rounded hover:bg-yellow_hover"
-                                    >
+                                        class="mt-6 w-1/2 bg-yellow text-dark font-body py-2 rounded hover:bg-yellow_hover">
                                         Zavřít
                                     </button>
                                 </div>
