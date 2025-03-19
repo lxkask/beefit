@@ -6,15 +6,28 @@
   import info from '../../lib/images/info.svg';
   import { fade } from 'svelte/transition';
 
+  // Tooltip 1 (for "Studentský vstup")
   const {
-    elements: { trigger, content, arrow },
-    states: { open },
+      elements: { trigger: trigger1, content: content1, arrow: arrow1 },
+      states: { open: open1 },
   } = createTooltip({
-    positioning: {
-      placement: 'bottom',
-    },
-    openDelay: 100,
-    closeDelay: 100,
+      positioning: {
+          placement: 'bottom',
+      },
+      openDelay: 100,
+      closeDelay: 100,
+  });
+
+  // Tooltip 2 (for "Záloha za permici")
+  const {
+      elements: { trigger: trigger2, content: content2, arrow: arrow2 },
+      states: { open: open2 },
+  } = createTooltip({
+      positioning: {
+          placement: 'bottom',
+      },
+      openDelay: 100,
+      closeDelay: 100,
   });
 </script>
 
@@ -51,26 +64,54 @@
         <p>Loading...</p>
       {/if}
     
+      <!-- First Tooltip -->
       <div class="flex items-center mt-5 ml-2 text-white gap-2 relative">
-        <p class="mb-1">Studentský vstup - 100 Kč</p>
-    
+        <p class="mb-1">Studentský/55+ let vstup - 100 Kč</p>
+
         <!-- Tooltip Trigger (Info Icon) -->
         <span 
             class="relative flex items-center justify-center w-4 h-4 bg-yellow rounded-full cursor-pointer"
-            use:melt={$trigger}
+            use:melt={$trigger1}
         >
             <img src={info} alt="Info" class="w-4 h-4" />
         </span>
-    
+
         <!-- Tooltip Content (Only visible when hovered) -->
-        {#if $open}
+        {#if $open1}
             <div 
-                use:melt={$content} 
+                use:melt={$content1} 
                 transition:fade={{ duration: 150 }}
                 class="absolute left-1/2 top-full mt-1 w-max bg-black text-white text-sm px-3 py-2 rounded shadow-lg"
             >
-                Studentský vstup lze uplatnit v hodinách <br/>10:00 - 15:00 a 19:00 - 22:00.
-                <div use:melt={$arrow} class="w-3 h-3 bg-black rotate-45 absolute -top-1 left-1/2 -translate-x-1/2"></div>
+                Studentský vstup lze uplatnit v hodinách <br/>10:00 - 15:00 a 19:00 - 22:00. <br/>Při platbě předložte platný ISIC/doklad.
+                <div use:melt={$arrow1} class="w-3 h-3 bg-black rotate-45 absolute -top-1 left-1/2 -translate-x-1/2"></div>
+            </div>
+        {/if}
+      </div>
+
+      <div class="flex items-center mt-2 ml-2 text-white gap-2 relative">
+        <p class="mb-1">Vstup do fitness centra osobám mladším 15 let možný jen v doprovodu dospělé osoby.</p>
+      </div>
+
+      <!-- Second Tooltip -->
+      <div class="flex items-center mt-2 ml-2 text-white gap-2 relative">
+        <p class="mb-1">Záloha za permici: 100 Kč</p>
+        <span 
+            class="relative flex items-center justify-center w-4 h-4 bg-yellow rounded-full cursor-pointer"
+            use:melt={$trigger2}
+        >
+            <img src={info} alt="Info" class="w-4 h-4" />
+        </span>
+
+        <!-- Tooltip Content (Only visible when hovered) -->
+        {#if $open2}
+            <div 
+                use:melt={$content2} 
+                transition:fade={{ duration: 150 }}
+                class="absolute left-1/2 top-full mt-1 w-max bg-black text-white text-sm px-3 py-2 rounded shadow-lg"
+            >
+                Při vrácení neponičené permice je částká v hotovosti vrácena
+                <div use:melt={$arrow2} class="w-3 h-3 bg-black rotate-45 absolute -top-1 left-1/2 -translate-x-1/2"></div>
             </div>
         {/if}
       </div>

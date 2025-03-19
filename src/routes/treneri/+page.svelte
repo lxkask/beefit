@@ -21,7 +21,7 @@
         <div class="container mx-auto text-center mb-16">
             <h2 class="text-3xl font-bold font-heading mb-5">Trenéři</h2>
             <p class="text-lg text-white max-w-4xl mx-auto px-4 md:px-8">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                Chcete si zacvičit pod vedením profesionála? Můžete si vybrat mezi individuální lekcí s trenérem nebo skupinovými lekcemi.
             </p>
         </div>
     </section>
@@ -83,21 +83,51 @@
                             <div class="bg-black rounded-xl shadow-lg p-6 w-11/12 max-w-md">
                                 <h2 use:melt={$title} class="text-xl font-bold text-center mb-4 text-white">{trainer.name}</h2>
 
-                                {#if trainer.education}
-                                    <p class="text-white"><strong>Vzdělání:</strong> {trainer.education}</p>
-                                {/if}
-                                {#if trainer.specialization}
-                                    <p class="text-white"><strong>Specializace:</strong> {trainer.specialization}</p>
-                                {/if}
-                                {#if trainer.achievements}
-                                    <p class="text-white"><strong>Sportovní úspěchy:</strong> {trainer.achievements}</p>
-                                {/if}
-                                {#if trainer.hobbies}
-                                    <p class="text-white"><strong>Zájmy:</strong> {trainer.hobbies}</p>
-                                {/if}
-                                {#if trainer.contact}
-                                    <p class="text-white"><strong>Kontakt:</strong> {trainer.contact}</p>
-                                {/if}
+                                <div class="text-white space-y-4">
+                                    {#if trainer.education?.length}
+                                        <div>
+                                            <h3 class="font-bold">Vzdělání:</h3>
+                                            <ul class="list-disc list-inside pl-4">
+                                                {#each trainer.education as edu}
+                                                    <li>{edu}</li>
+                                                {/each}
+                                            </ul>
+                                        </div>
+                                    {/if}
+
+                                    {#if trainer.specialization?.length}
+                                        <div>
+                                            <h3 class="font-bold">Specializace:</h3>
+                                            <ul class="list-disc list-inside pl-4">
+                                                {#each trainer.specialization as spec}
+                                                    <li>{spec}</li>
+                                                {/each}
+                                            </ul>
+                                        </div>
+                                    {/if}
+
+                                    {#if trainer.achievements?.length}
+                                        <div>
+                                            <h3 class="font-bold">Sportovní úspěchy:</h3>
+                                            <ul class="list-disc list-inside pl-4">
+                                                {#each trainer.achievements as achievement}
+                                                    <li>{achievement}</li>
+                                                {/each}
+                                            </ul>
+                                        </div>
+                                    {/if}
+
+                                    {#if trainer.hobbies?.length}
+                                        <div>
+                                            <h3 class="font-bold">Zájmy:</h3>
+                                            <ul class="list-disc list-inside pl-4">
+                                                {#each trainer.hobbies as hobby}
+                                                    <li>{hobby}</li>
+                                                {/each}
+                                            </ul>
+                                        </div>
+                                    {/if}
+                                </div>
 
                                 <div class="flex justify-center">
                                     <button 
