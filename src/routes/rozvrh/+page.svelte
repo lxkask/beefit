@@ -3,26 +3,31 @@
         <!-- Nadpis sekce -->
         <div class="container mx-auto text-left mb-16 font-bold w-3/4">
             <h2 class="text-3xl font-bold font-heading mb-5 text-center">Skupinové lekce s trenéry</h2>
-            <div class="flex flex-col gap-6  px-4 md:px-8 max-w-4xl">
+            <div class="flex flex-col gap-5   px-4 md:px-8 max-w-4xl">
                 <p class="text-lg font-medium text-white">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                    Máte raději cvičení ve skupině? Podívejte se na rozpis našich skupinových lekcí zde:
                 </p>
 
-                <p class="text-lg text-white">
-                    <span class="text-yellow">Podmínkou</span> konání lekce jsou <span class="text-yellow">minimálně</span> 2 přihlášení účastníci
-                </p>
+                <div class="text-center flex ">
+                    <a href="https://www.supersaas.cz/schedule/beefit/Beefit_aktivity" target="_blank">
+                        <button class="bg-yellow text-black font-bold py-2 px-6 rounded-lg hover:bg-yellow_hover">
+                            Online rezervace
+                        </button>
+                    </a>
+                </div>
 
                 <p class="text-lg text-white">
-                    Účast na lekci rezervujte <span class="text-yellow">online</span> nebo na <span class="text-yellow">info@beefit.cz</span> / <span class="text-yellow">733 60 60 02</span>
+                    <span class="text-yellow">Podmínky:</span>
                 </p>
+
+                <ul class="text-lg text-white ml-2">
+                    <li>✔️ Přihlášení nejpozději 24 hodin před lekcí</li>
+                    <li>✔️ Minimální počet účastníků: 2 osoby</li>
+                </ul>
             </div>
 
             <!-- Tlačítko pro rezervace -->
-            <div class="text-center mt-12">
-                <button class="bg-yellow text-black font-bold py-2 px-6 rounded-lg hover:bg-yellow_hover">
-                    Online rezervace
-                </button>
-            </div>
+            
         </div>
     </section>
     <section class="pb-10 bg-grey text-white">
