@@ -90,25 +90,7 @@
 
     onMount(() => {
         startAutoSlide();
-    });
-
-    let reviews = [
-    {
-      name: "Kateřina M.",
-      text: "Malé útulné fitness, kde se člověk dokáže docela zničit a odchází spokojený se svým výkonem.",
-      rating: 5
-    },
-    {
-      name: "Olga P.",
-      text: "Byla jsem zde i s dcerou. Hezky jsme si v rodinném fitku zacvičily, bylo zde příjemné denní světlo a velmi dobře fungovala klimatizace. Zase obě přijdem.",
-      rating: 5
-    },
-    {
-      name: "Tom Brown",
-      text: "Dobré vybavení, relativně menší počet lidí a hlavně mód vstupu, který nenutí ke členství a omezení člověka jen na jedno místo ke cvičení.",
-      rating: 5
-    }
-  ];    
+    });  
 </script>
 
 <main>
