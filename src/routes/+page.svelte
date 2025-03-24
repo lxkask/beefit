@@ -1,9 +1,29 @@
 <script lang="ts">
     import equipment from '../lib/images/equipment.webp';
+    import equipmentSmall from '../lib/images/equipmentSmall.webp';
+    import equipmentMedium from '../lib/images/equipmentMedium.webp';
+    import equipmentLarge from '../lib/images/equipmentLarge.webp';
+
     import equipment2 from '../lib/images/equipment2.webp';
+    import equipment2Small from '../lib/images/equipment2Small.webp';
+    import equipment2Medium from '../lib/images/equipment2Medium.webp';
+    import equipment2Large from '../lib/images/equipment2Large.webp';
+
     import equipment3 from '../lib/images/equipment3.webp';
+    import equipment3Small from '../lib/images/equipment3Small.webp';
+    import equipment3Medium from '../lib/images/equipment3Medium.webp';
+    import equipment3Large from '../lib/images/equipment3Large.webp';
+
     import equipment4 from '../lib/images/equipment4.webp';
+    import equipment4Small from '../lib/images/equipment4Small.webp';
+    import equipment4Medium from '../lib/images/equipment4Medium.webp';
+    import equipment4Large from '../lib/images/equipment4Large.webp';
+
     import equipment5 from '../lib/images/equipment5.webp';
+    import equipment5Small from '../lib/images/equipment5Small.webp';
+    import equipment5Medium from '../lib/images/equipment5Medium.webp';
+    import equipment5Large from '../lib/images/equipment5Large.webp';
+
     import clock from '../lib/images/clock-icon.svg';
     import person from '../lib/images/person-icon.svg';
     import pricetag from '../lib/images/pricetag-icon.svg';
@@ -11,86 +31,109 @@
     import bannerVideo from '../lib/videos/bannerVid.webm';
     import ReviewsCarousel from '../lib/components/ReviewsCarousel.svelte';
 
+    import { onMount } from 'svelte';
+
     const {
         elements: { trigger, portalled, overlay, content, title, description, close },
         states: { open }
     } = createDialog();
 
-    let currentIndex = 0;
-    let autoSlideTimer: number | null = null;
     const slides = [
         {
-            image: equipment,
+            imageFull: equipment,
+            imageLarge: equipmentLarge,
+            imageMedium: equipmentMedium,
+            imageSmall: equipmentSmall,
             title: 'Rodinné prostředí',
-            altText: 'First equipment photo',
+            altText: 'Rodinné prostředí',
             description: 'U nás se nemusíte bát, že se ztratíte v davu. Každý je u nás vítán, ať už začínáte, nebo cvičíte pravidelně.'
         },
         {
-            image: equipment2,
+            imageFull: equipment2,
+            imageLarge: equipment2Large,
+            imageMedium: equipment2Medium,
+            imageSmall: equipment2Small,
             title: 'Členství bez závazků a bez poplatků',
-            altText: 'Second equipment photo',
+            altText: 'Členství bez závazků a bez poplatků',
             description: 'Transparentnost je pro nás zásadní, proto u nás nenajdete žádné zbytečné poplatky za sprchu; půjčení klíčku ke skříňkám, aj.'
         },
         {
-            image: equipment3,
+            imageFull: equipment3,
+            imageLarge: equipment3Large,
+            imageMedium: equipment3Medium,
+            imageSmall: equipment3Small,
             title: 'Profesionální trenéři a individuální přístup',
-            altText: 'Third equipment photo',
+            altText: 'Profesionální trenéři a individuální přístup',
             description: 'Náš tým zkušených trenérů vám pomůže dosáhnout vašich cílů, ať už je to zlepšení kondice, posílení těla nebo regenerace po zranění.'
         },
         {
-            image: equipment4,
+            imageFull: equipment4,
+            imageLarge: equipment4Large,
+            imageMedium: equipment4Medium,
+            imageSmall: equipment4Small,
             title: 'Moderní vybavení a příjemné prostředí',
-            altText: 'Fourth equipment photo',
+            altText: 'Moderní vybavení a příjemné prostředí',
             description: 'Prostor a vybavení, které vás budou bavit. Ať už máte rádi kardio, posilování nebo funkční trénink, u nás najdete všechno, co potřebujete, a navíc ve stylovém, čistém a komfortním prostředí.'
         },
         {
-            image: equipment5,
+            imageFull: equipment5,
+            imageLarge: equipment5Large,
+            imageMedium: equipment5Medium,
+            imageSmall: equipment5Small,
             title: 'Dostupné ceny',
-            altText: 'Fifth quipment photo',
+            altText: 'Dostupné ceny',
             description: 'Naším cílem je, aby kvalitní fitness bylo dostupné pro každého, proto u nás najdete ceny nižší než ve většině běžných fitness center.'
         }
     ];
 
-    // Start the automatic slide change
+
+    let currentIndex = 0;
+    let autoSlideTimer: number | null = null;
+    let lastManualSlideTime = 0;
+
     const startAutoSlide = () => {
-    autoSlideTimer = window.setInterval(() => {
-        nextSlide();
-    }, 10000); // 10 seconds interval for auto-slide
-};
+        stopAutoSlide(); // Always clear existing timer first
+        autoSlideTimer = window.setInterval(() => {
+            nextSlide();
+        }, 10000); // 10 seconds interval
+    };
 
-    // Clear the existing timer when manual navigation is used
     const stopAutoSlide = () => {
-    if (autoSlideTimer !== null) {
-        clearInterval(autoSlideTimer);
-        autoSlideTimer = null; // Optional: reset the timer to null after clearing
-    }
-};
+        if (autoSlideTimer) {
+            clearInterval(autoSlideTimer);
+            autoSlideTimer = null;
+        }
+    };
 
-    // Manual navigation functions
     const prevSlide = () => {
-        stopAutoSlide(); // Clear timer on manual change
         currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-        startAutoSlide(); // Restart the auto-slide after a short delay
+        resetAutoSlide();
     };
 
     const nextSlide = () => {
-        stopAutoSlide(); // Clear timer on manual change
         currentIndex = (currentIndex + 1) % slides.length;
-        startAutoSlide(); // Restart the auto-slide after a short delay
+        resetAutoSlide();
     };
 
     const updateSlide = (index: number) => {
-        stopAutoSlide(); // Clear timer on manual change
         currentIndex = index;
-        startAutoSlide(); // Restart the auto-slide after a short delay
+        resetAutoSlide();
     };
 
-    // Start the automatic sliding when the component is mounted
-    import { onMount } from 'svelte';
+    const resetAutoSlide = () => {
+        lastManualSlideTime = Date.now();
+        stopAutoSlide();
+        startAutoSlide();
+    };
 
     onMount(() => {
-        startAutoSlide();
-    });  
+        // Start with slight delay to ensure smooth initial transition
+        setTimeout(() => {
+            startAutoSlide();
+        }, 500);
+        
+        return stopAutoSlide;
+    });
 </script>
 
 <main>
@@ -178,59 +221,62 @@
     <section class="equipment py-24 bg-grey">
         <div class="relative">
             <!-- Slideshow Container -->
-            <div class="relative overflow-hidden w-full mx-auto max-w-screen-lg ">
-                <div 
-                    class="flex transition-transform duration-500 ease-out" 
-                    style="transform: translateX(-{currentIndex * 100}%)"
-                >
-                    {#each slides as slide, index}
-                        <div class="flex-shrink-0 w-full flex flex-col lg:flex-row items-center gap-8 px-16 mb-10 bg-grey text-white">
+            <div role="region" 
+            aria-label="Image carousel"
+            class="relative overflow-hidden w-full mx-auto max-w-screen-xl px-8">
+                <!-- Slides -->
+                <div class="flex h-[500px] transition-transform duration-500 ease-out" 
+                    style="transform: translateX(-{currentIndex * 100}%)">
+                    {#each slides as slide}
+                        <div class="flex-shrink-0 w-full h-full flex flex-col md:flex-row items-center gap-6 lg:gap-8 px-8 sm:px-12 lg:px-16 bg-grey text-white">
                             <!-- Image Container -->
-                            <div class="w-full lg:w-1/2 h-72 lg:h-96">
-                                <img src={slide.image} alt={slide.altText} class="w-full h-full object-cover rounded" />
+                            <div class="w-full md:w-1/2 h-1/2 md:h-full">
+                                <img 
+                                    src={slide.imageFull} 
+                                    srcset={`${slide.imageSmall} 640w, ${slide.imageMedium} 1024w, ${slide.imageLarge} 1280w, ${slide.imageFull} 1920w`}
+                                    sizes="(max-width: 640px) 640w, (max-width: 1024px) 1024w, (max-width: 1280px) 1280w, 1920w"
+                                    alt={slide.altText} 
+                                    class="w-full h-full object-cover rounded" 
+                                />
                             </div>
-
                             <!-- Text Content -->
-                            <div class="w-full lg:w-1/2 flex flex-col justify-center">
-                                <h2 class="text-2xl lg:text-3xl font-bold">{slide.title}</h2>
-                                <p class="mt-2 text-lg lg:text-xl">{slide.description}</p>
+                            <div class="w-full md:w-1/2 h-1/2 md:h-full flex flex-col justify-center p-4 sm:p-6 md:p-0">
+                                <h2 class="text-xl sm:text-2xl lg:text-3xl font-bold">{slide.title}</h2>
+                                <p class="mt-2 text-base sm:text-lg lg:text-xl">{slide.description}</p>
                             </div>
                         </div>
                     {/each}
                 </div>
 
-                <!-- Arrow Buttons -->
+                <!-- Navigation Arrows -->
                 <button 
-                    class="absolute top-1/2 md:left-0 left-2 transform -translate-y-1/2 text-black bg-yellow rounded-3xl px-2 py-6 hover:bg-yellow_hover z-10"
+                    class="absolute top-1/2 left-2 transform -translate-y-1/2 text-black bg-yellow rounded-3xl px-2 py-6 hover:bg-yellow_hover z-10"
                     on:click={prevSlide}
-                    aria-label="Previous slide"
-                >
+                    aria-label="Previous slide">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                     </svg>
                 </button>
                 <button 
-                    class="absolute top-1/2 md:right-0 right-2 transform -translate-y-1/2 text-black bg-yellow rounded-3xl px-2 py-6 hover:bg-yellow_hover z-10"
+                    class="absolute top-1/2 right-2 transform -translate-y-1/2 text-black bg-yellow rounded-3xl px-2 py-6 hover:bg-yellow_hover z-10"
                     on:click={nextSlide}
-                    aria-label="Next slide"
-                >
+                    aria-label="Next slide">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                     </svg>
                 </button>
+            </div>
 
-                <!-- Navigation Dots -->
-                <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 flex space-x-2">
-                    {#each slides as _, index}
-                        <button
-                            class="w-5 h-5 bg-white rounded-full cursor-pointer focus:outline-none"
-                            class:bg-yellow={index === currentIndex}
-                            on:click={() => updateSlide(index)}
-                            aria-label={`Slide ${index + 1}`}
-                            aria-current={index === currentIndex ? 'true' : 'false'}
-                        ></button>
-                    {/each}
-                </div>
+            <!-- Navigation Dots -->
+            <div class="flex justify-center mt-8 space-x-2">
+                {#each slides as _, index}
+                    <button
+                        class="w-5 h-5 bg-white rounded-full cursor-pointer focus:outline-none transition-colors duration-300"
+                        class:bg-yellow={index === currentIndex}
+                        on:click={() => updateSlide(index)}
+                        aria-label={`Go to slide ${index + 1}`}>
+                    </button>
+                {/each}
             </div>
         </div>
     </section>
