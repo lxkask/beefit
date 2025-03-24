@@ -4,11 +4,11 @@
     import 'keen-slider/keen-slider.min.css';
     
     export let reviews = [
-      { name: "Kateřina Mrázová", rating: 5, text: "Malé útulné fitness, kde se člověk dokáže docela zničit a odchází spokojený se svým výkonem." },
-      { name: "Olga Pantáková", rating: 5, text: "Byla jsem zde i s dcerou. Hezky jsme si v rodinném fitku zacvičily, bylo zde příjemné denní světlo a velmi dobře fungovala klimatizace. Zase obě přijdem." },
-      { name: "Ondřej Zubec", rating: 5, text: "Dobré vybavení, relativně menší počet lidí a hlavně možnost vstupů, která nenutí ke členství a neomezuje člověka jen k jednomu místu na cvičení." },
-      { name: "Petr Boes", rating: 5, text: "Menší, rodinné fitko, ve kterém ale nechybí nic podstatného. Činky, kardio zóna, příjemné recepční, skvělí trenéři :)" },
-      { name: "Veronika Břeňová", rating: 5, text: "Fitness centrum má příjemnou atmosféru a ochotný personál, který vždy rád poradí. Ráda se sem vracím díky pohodovému prostředí a všemu, co ke cvičení potřebuji :)" },
+      { name: "Kateřina M.", rating: 5, text: "Malé útulné fitness, kde se člověk dokáže docela zničit a odchází spokojený se svým výkonem." },
+      { name: "Olga P.", rating: 5, text: "Byla jsem zde i s dcerou. Hezky jsme si v rodinném fitku zacvičily, bylo zde příjemné denní světlo a velmi dobře fungovala klimatizace. Zase obě přijdem." },
+      { name: "Ondřej Z.", rating: 5, text: "Dobré vybavení, relativně menší počet lidí a hlavně možnost vstupů, která nenutí ke členství a neomezuje člověka jen k jednomu místu na cvičení." },
+      { name: "Petr B.", rating: 5, text: "Menší, rodinné fitko, ve kterém ale nechybí nic podstatného. Činky, kardio zóna, příjemné recepční, skvělí trenéři :)" },
+      { name: "Veronika B.", rating: 5, text: "Fitness centrum má příjemnou atmosféru a ochotný personál, který vždy rád poradí. Ráda se sem vracím díky pohodovému prostředí a všemu, co ke cvičení potřebuji :)" },
     ];
   
     let sliderContainer: HTMLElement;

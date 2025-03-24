@@ -1,15 +1,37 @@
 <script lang="ts">
     import equipment from '../lib/images/equipment.webp';
+    import equipmentSmall from '../lib/images/equipment-small.webp';
+    import equipmentMedium from '../lib/images/equipment-medium.webp';
+    import equipmentLarge from '../lib/images/equipment-large.webp';
+
     import equipment2 from '../lib/images/equipment2.webp';
+    import equipment2Small from '../lib/images/equipment2-small.webp';
+    import equipment2Medium from '../lib/images/equipment2-medium.webp';
+    import equipment2Large from '../lib/images/equipment2-large.webp';
+
     import equipment3 from '../lib/images/equipment3.webp';
+    import equipment3Small from '../lib/images/equipment3-small.webp';
+    import equipment3Medium from '../lib/images/equipment3-medium.webp';
+    import equipment3Large from '../lib/images/equipment3-large.webp';
+
     import equipment4 from '../lib/images/equipment4.webp';
+    import equipment4Small from '../lib/images/equipment4-small.webp';
+    import equipment4Medium from '../lib/images/equipment4-medium.webp';
+    import equipment4Large from '../lib/images/equipment4-large.webp';
+
     import equipment5 from '../lib/images/equipment5.webp';
+    import equipment5Small from '../lib/images/equipment5-small.webp';
+    import equipment5Medium from '../lib/images/equipment5-medium.webp';
+    import equipment5Large from '../lib/images/equipment5-large.webp';
+
     import clock from '../lib/images/clock-icon.svg';
     import person from '../lib/images/person-icon.svg';
     import pricetag from '../lib/images/pricetag-icon.svg';
     import { createDialog, melt } from '@melt-ui/svelte';
     import bannerVideo from '../lib/videos/bannerVid.webm';
     import ReviewsCarousel from '../lib/components/ReviewsCarousel.svelte';
+
+    import { onMount } from 'svelte';
 
     const {
         elements: { trigger, portalled, overlay, content, title, description, close },
@@ -18,79 +40,93 @@
 
     let currentIndex = 0;
     let autoSlideTimer: number | null = null;
+
     const slides = [
         {
-            image: equipment,
+            imageFull: equipment,
+            imageLarge: equipmentLarge,
+            imageMedium: equipmentMedium,
+            imageSmall: equipmentSmall,
             title: 'Rodinné prostředí',
             altText: 'First equipment photo',
-            description: 'U nás se nemusíte bát, že se ztratíte v davu. Každý je u nás vítán, ať už začínáte, nebo cvičíte pravidelně.'
+            description: 'U nás se nemusíte bát, že se ztratíte v davu...'
         },
         {
-            image: equipment2,
-            title: 'Členství bez závazků a bez poplatků',
-            altText: 'Second equipment photo',
-            description: 'Transparentnost je pro nás zásadní, proto u nás nenajdete žádné zbytečné poplatky za sprchu; půjčení klíčku ke skříňkám, aj.'
+            imageFull: equipment2,
+            imageLarge: equipment2Large,
+            imageMedium: equipment2Medium,
+            imageSmall: equipment2Small,
+            title: 'Rodinné prostředí',
+            altText: 'First equipment photo',
+            description: 'U nás se nemusíte bát, že se ztratíte v davu...'
         },
         {
-            image: equipment3,
-            title: 'Profesionální trenéři a individuální přístup',
-            altText: 'Third equipment photo',
-            description: 'Náš tým zkušených trenérů vám pomůže dosáhnout vašich cílů, ať už je to zlepšení kondice, posílení těla nebo regenerace po zranění.'
+            imageFull: equipment3,
+            imageLarge: equipment3Large,
+            imageMedium: equipment3Medium,
+            imageSmall: equipment3Small,
+            title: 'Rodinné prostředí',
+            altText: 'First equipment photo',
+            description: 'U nás se nemusíte bát, že se ztratíte v davu...'
         },
         {
-            image: equipment4,
-            title: 'Moderní vybavení a příjemné prostředí',
-            altText: 'Fourth equipment photo',
-            description: 'Prostor a vybavení, které vás budou bavit. Ať už máte rádi kardio, posilování nebo funkční trénink, u nás najdete všechno, co potřebujete, a navíc ve stylovém, čistém a komfortním prostředí.'
+            imageFull: equipment4,
+            imageLarge: equipment4Large,
+            imageMedium: equipment4Medium,
+            imageSmall: equipment4Small,
+            title: 'Rodinné prostředí',
+            altText: 'First equipment photo',
+            description: 'U nás se nemusíte bát, že se ztratíte v davu...'
         },
         {
-            image: equipment5,
-            title: 'Dostupné ceny',
-            altText: 'Fifth quipment photo',
-            description: 'Naším cílem je, aby kvalitní fitness bylo dostupné pro každého, proto u nás najdete ceny nižší než ve většině běžných fitness center.'
+            imageFull: equipment5,
+            imageLarge: equipment5Large,
+            imageMedium: equipment5Medium,
+            imageSmall: equipment5Small,
+            title: 'Rodinné prostředí',
+            altText: 'First equipment photo',
+            description: 'U nás se nemusíte bát, že se ztratíte v davu...'
         }
     ];
 
-    // Start the automatic slide change
+
     const startAutoSlide = () => {
-    autoSlideTimer = window.setInterval(() => {
-        nextSlide();
-    }, 10000); // 10 seconds interval for auto-slide
-};
+        autoSlideTimer = window.setInterval(() => {
+            nextSlide();
+        }, 10000); // 10 seconds interval for auto-slide
+    };
 
-    // Clear the existing timer when manual navigation is used
     const stopAutoSlide = () => {
-    if (autoSlideTimer !== null) {
-        clearInterval(autoSlideTimer);
-        autoSlideTimer = null; // Optional: reset the timer to null after clearing
-    }
-};
+        if (autoSlideTimer !== null) {
+            clearInterval(autoSlideTimer);
+            autoSlideTimer = null;
+        }
+    };
 
-    // Manual navigation functions
     const prevSlide = () => {
-        stopAutoSlide(); // Clear timer on manual change
         currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-        startAutoSlide(); // Restart the auto-slide after a short delay
+        console.log("Previous Slide - Current Index:", currentIndex); // Debugging
+        stopAutoSlide();
+        startAutoSlide();
     };
 
     const nextSlide = () => {
-        stopAutoSlide(); // Clear timer on manual change
         currentIndex = (currentIndex + 1) % slides.length;
-        startAutoSlide(); // Restart the auto-slide after a short delay
+        console.log("Next Slide - Current Index:", currentIndex); // Debugging
+        stopAutoSlide();
+        startAutoSlide();
     };
 
-    const updateSlide = (index: number) => {
-        stopAutoSlide(); // Clear timer on manual change
+    const updateSlide = (index) => {
+        stopAutoSlide();
         currentIndex = index;
-        startAutoSlide(); // Restart the auto-slide after a short delay
-    };
-
-    // Start the automatic sliding when the component is mounted
-    import { onMount } from 'svelte';
+        console.log("Update Slide - Current Index:", currentIndex); // Debugging
+        startAutoSlide();
+};
 
     onMount(() => {
         startAutoSlide();
-    });  
+    }); 
 </script>
 
 <main>
@@ -178,16 +214,22 @@
     <section class="equipment py-24 bg-grey">
         <div class="relative">
             <!-- Slideshow Container -->
-            <div class="relative overflow-hidden w-full mx-auto max-w-screen-lg ">
+            <div class="relative overflow-hidden w-full mx-auto max-w-screen-lg">
                 <div 
                     class="flex transition-transform duration-500 ease-out" 
-                    style="transform: translateX(-{currentIndex * 100}%)"
+                    style="transform: translateX(-{currentIndex * 100}%); width: {slides.length * 100}%;"
                 >
                     {#each slides as slide, index}
-                        <div class="flex-shrink-0 w-full flex flex-col lg:flex-row items-center gap-8 px-16 mb-10 bg-grey text-white">
+                        <div class="flex-shrink-0 w-full flex flex-col lg:flex-row items-center gap-8 px-16 mb-10 bg-grey text-white" style="width: {100 / slides.length}%;">
                             <!-- Image Container -->
                             <div class="w-full lg:w-1/2 h-72 lg:h-96">
-                                <img src={slide.image} alt={slide.altText} class="w-full h-full object-cover rounded" />
+                                <img 
+                                    src="{slide.imageFull}" 
+                                    srcset="{slide.imageSmall} 640w, {slide.imageMedium} 1024w, {slide.imageLarge} 1280w, {slide.imageFull} 1920w"
+                                    sizes="(max-width: 640px) 640w, (max-width: 1024px) 1024w, (max-width: 1280px) 1280w, 1920w"
+                                    alt="{slide.altText}" 
+                                    class="w-full h-full object-cover rounded" 
+                                />
                             </div>
 
                             <!-- Text Content -->
@@ -226,7 +268,7 @@
                             class="w-5 h-5 bg-white rounded-full cursor-pointer focus:outline-none"
                             class:bg-yellow={index === currentIndex}
                             on:click={() => updateSlide(index)}
-                            aria-label={`Slide ${index + 1}`}
+                            aria-label="Slide {index + 1}"
                             aria-current={index === currentIndex ? 'true' : 'false'}
                         ></button>
                     {/each}
