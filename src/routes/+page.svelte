@@ -24,11 +24,24 @@
     import equipment5Medium from '../lib/images/equipment5Medium.webp';
     import equipment5Large from '../lib/images/equipment5Large.webp';
 
+    import bannerSmallWebm from '../lib/videos/banner-small.webm';
+    import bannerMediumWebm from '../lib/videos/banner-medium.webm';
+    import bannerLargeWebm from '../lib/videos/banner-large.webm';
+    import bannerFullWebm from '../lib/videos/banner-full.webm';
+    
+    import bannerSmallMp4 from '../lib/videos/banner-small.mp4';
+    import bannerMediumMp4 from '../lib/videos/banner-medium.mp4';
+    import bannerLargeMp4 from '../lib/videos/banner-large.mp4';
+    import bannerFullMp4 from '../lib/videos/banner-full.mp4';
+
+    import posterJpg from '../lib/images/video-poster.jpg';
+    import posterWebp from '../lib/images/video-poster.webp';
+    let currentPoster = posterWebp;
+
     import clock from '../lib/images/clock-icon.svg';
     import person from '../lib/images/person-icon.svg';
     import pricetag from '../lib/images/pricetag-icon.svg';
     import { createDialog, melt } from '@melt-ui/svelte';
-    import bannerVideo from '../lib/videos/bannerVid.webm';
     import ReviewsCarousel from '../lib/components/ReviewsCarousel.svelte';
 
     import { onMount } from 'svelte';
@@ -140,8 +153,29 @@
     <!-- Hero Section -->
     <section class="hero relative md:h-[75vh] h-[60vh] w-full flex md:items-end items-end">
         <!-- Video Background -->
-        <video autoplay muted loop playsinline disablePictureInPicture class="absolute top-0 left-0 w-full h-full object-cover">
-            <source src="{bannerVideo}" type="video/mp4" />
+        <video 
+            autoplay 
+            muted 
+            loop 
+            playsinline 
+            disablePictureInPicture 
+            preload="auto"
+            poster={currentPoster}
+            on:error={() => currentPoster = posterJpg}
+            class="absolute top-0 left-0 w-full h-full object-cover"
+        >
+            <!-- WebM Versions (preferred) -->
+            <source src={bannerSmallWebm} type="video/webm" media="(max-width: 640px)">
+            <source src={bannerMediumWebm} type="video/webm" media="(max-width: 1024px)">
+            <source src={bannerLargeWebm} type="video/webm" media="(max-width: 1280px)">
+            <source src={bannerFullWebm} type="video/webm">
+            
+            <!-- MP4 Fallbacks -->
+            <source src={bannerSmallMp4} type="video/mp4" media="(max-width: 640px)">
+            <source src={bannerMediumMp4} type="video/mp4" media="(max-width: 1024px)">
+            <source src={bannerLargeMp4} type="video/mp4" media="(max-width: 1280px)">
+            <source src={bannerFullMp4} type="video/mp4">
+            
             Your browser does not support the video tag.
         </video>
     
@@ -223,7 +257,7 @@
             <!-- Slideshow Container -->
             <div role="region" 
             aria-label="Image carousel"
-            class="relative overflow-hidden w-full mx-auto max-w-screen-xl px-8">
+            class="relative overflow-hidden w-full mx-auto max-w-screen-xl px-8g">
                 <!-- Slides -->
                 <div class="flex h-[500px] transition-transform duration-500 ease-out" 
                     style="transform: translateX(-{currentIndex * 100}%)">
