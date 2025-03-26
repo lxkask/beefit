@@ -5,6 +5,18 @@
   import { createTooltip, melt } from '@melt-ui/svelte';
   import info from '../../lib/images/info.svg';
   import { fade } from 'svelte/transition';
+  import { browser } from '$app/environment';
+
+  // Destructure student pricing with fallback values
+  const studentPricing = priceTable?.studentPricing || {
+    singleEntry: 100,
+    monthlyPass: 990
+  };
+
+  // Format currency (100 -> "100 Kč")
+  function formatCurrency(amount) {
+    return `${amount} Kč`;
+  }
 
   // Tooltip 1 (for "Studentský vstup")
   const {
@@ -14,6 +26,8 @@
       positioning: {
           placement: 'bottom',
       },
+      forceVisible: true,
+      closeOnPointerDown: true,
       openDelay: 100,
       closeDelay: 100,
   });
@@ -26,9 +40,16 @@
       positioning: {
           placement: 'bottom',
       },
+      forceVisible: true,
+      closeOnPointerDown: true,
       openDelay: 100,
       closeDelay: 100,
   });
+
+  // iOS touch workaround
+  if (browser && /iPad|iPhone|iPod/.test(navigator.userAgent)) {
+      document.addEventListener('touchstart', () => {}, { passive: true });
+  }
 </script>
 
 <main>
@@ -41,9 +62,9 @@
             <thead>
               <tr class="bg-yellow text-black">
                 <th class="border border-yellow p-2">Typ vstupu</th>
-                <th class="border border-yellow p-2">Celodenní</th>
-                <th class="border border-yellow p-2">Pracovní</th>
-                <th class="border border-yellow p-2">Večer + víkend</th>
+                <th class="border border-yellow p-2">Celodenní (7:00 - 22:00)</th>
+                <th class="border border-yellow p-2">Pracovní (8:00 - 16:00)</th>
+                <th class="border border-yellow p-2">Večer + víkend (19:30 - 22:00)</th>
               </tr>
             </thead>
             <tbody>
@@ -64,26 +85,29 @@
         <p>Loading...</p>
       {/if}
     
-      <!-- First Tooltip -->
+      <!-- First Tooltip - Updated with Sanity values -->
       <div class="flex items-center mt-5 ml-2 text-white gap-2 relative">
-        <p class="mb-1">Studentský/55+ let vstup - 100 Kč</p>
+        <p class="mb-1">
+          Studentský/55+ let vstup - {formatCurrency(studentPricing.singleEntry)} / 1 měsíc - {formatCurrency(studentPricing.monthlyPass)}
+        </p>
 
         <!-- Tooltip Trigger (Info Icon) -->
         <span 
-            class="relative flex items-center justify-center w-4 h-4 bg-yellow rounded-full cursor-pointer"
+            class="relative flex items-center justify-center w-6 h-6 bg-yellow rounded-full cursor-pointer touch-action: manipulation;"
             use:melt={$trigger1}
+            on:touchstart|preventDefault
         >
             <img src={info} alt="Info" class="w-4 h-4" />
         </span>
 
-        <!-- Tooltip Content (Only visible when hovered) -->
+        <!-- Tooltip Content -->
         {#if $open1}
             <div 
                 use:melt={$content1} 
                 transition:fade={{ duration: 150 }}
-                class="absolute left-1/2 top-full mt-1 w-max bg-black text-white text-sm px-3 py-2 rounded shadow-lg"
+                class="absolute left-1/2 top-full mt-1 w-max max-w-[200px] bg-black text-white text-sm px-3 py-2 rounded shadow-lg z-50"
             >
-                Studentský vstup lze uplatnit v hodinách <br/>10:00 - 15:00 a 19:00 - 22:00. <br/>Při platbě předložte platný ISIC/doklad.
+                Při platbě předložte platný ISIC/doklad.
                 <div use:melt={$arrow1} class="w-3 h-3 bg-black rotate-45 absolute -top-1 left-1/2 -translate-x-1/2"></div>
             </div>
         {/if}
@@ -97,18 +121,19 @@
       <div class="flex items-center mt-2 ml-2 text-white gap-2 relative">
         <p class="mb-1">Záloha za permici: 100 Kč</p>
         <span 
-            class="relative flex items-center justify-center w-4 h-4 bg-yellow rounded-full cursor-pointer"
+            class="relative flex items-center justify-center w-6 h-6 bg-yellow rounded-full cursor-pointer touch-action: manipulation;"
             use:melt={$trigger2}
+            on:touchstart|preventDefault
         >
             <img src={info} alt="Info" class="w-4 h-4" />
         </span>
 
-        <!-- Tooltip Content (Only visible when hovered) -->
+        <!-- Tooltip Content -->
         {#if $open2}
             <div 
                 use:melt={$content2} 
                 transition:fade={{ duration: 150 }}
-                class="absolute left-1/2 top-full mt-1 w-max bg-black text-white text-sm px-3 py-2 rounded shadow-lg"
+                class="absolute left-1/2 top-full mt-1 w-max max-w-[200px] bg-black text-white text-sm px-3 py-2 rounded shadow-lg z-50"
             >
                 Při vrácení neponičené permice je částká v hotovosti vrácena
                 <div use:melt={$arrow2} class="w-3 h-3 bg-black rotate-45 absolute -top-1 left-1/2 -translate-x-1/2"></div>
@@ -118,7 +143,6 @@
     </section>
   </div>
       
-
     <!-- Payment Methods Section -->
     <div class="flex justify-center bg-grey">
       <section class="py-10 text-white w-4/5 md:w-1/2">
@@ -146,6 +170,14 @@
         }
         th, td {
             word-wrap: break-word;
+        }
+    }
+
+    /* Better touch targets for mobile */
+    @media (pointer: coarse) {
+        [data-melt-tooltip-trigger] {
+            min-width: 24px;
+            min-height: 24px;
         }
     }
 </style>

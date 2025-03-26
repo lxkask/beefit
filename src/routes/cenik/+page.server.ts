@@ -11,6 +11,10 @@ export const load = async () => {
                         allDay,
                         workingHours,
                         eveningWeekend
+                    },
+                    studentPricing {
+                        singleEntry,
+                        monthlyPass
                     }
                 },
                 "paymentMethods": *[_type == "paymentMethods"][0] {
