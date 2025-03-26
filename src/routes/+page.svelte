@@ -284,7 +284,7 @@
 
                 <!-- Navigation Arrows -->
                 <button 
-                    class="absolute top-1/2 left-2 transform -translate-y-1/2 text-black bg-yellow rounded-3xl px-2 py-6 hover:bg-yellow_hover z-10"
+                    class="absolute top-1/2 left-2 transform -translate-y-1/2 text-black bg-yellow rounded-full w-12 h-16 flex items-center justify-center hover:bg-yellow_hover z-10"  
                     on:click={prevSlide}
                     aria-label="Previous slide">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -292,7 +292,7 @@
                     </svg>
                 </button>
                 <button 
-                    class="absolute top-1/2 right-2 transform -translate-y-1/2 text-black bg-yellow rounded-3xl px-2 py-6 hover:bg-yellow_hover z-10"
+                    class="absolute top-1/2 right-4 transform -translate-y-1/2 text-black bg-yellow rounded-full w-12 h-16 flex items-center justify-center hover:bg-yellow_hover z-10"
                     on:click={nextSlide}
                     aria-label="Next slide">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">

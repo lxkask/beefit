@@ -2,12 +2,12 @@ import { defineType, defineField } from 'sanity';
 
 export default defineType({
     name: 'paymentMethods',
-    title: 'Payment Methods',
+    title: 'Způsoby platby',
     type: 'document',
     fields: [
         defineField({
             name: 'methods',
-            title: 'Payment Methods List',
+            title: 'Způsoby platby',
             type: 'array',
             of: [{ type: 'string' }],
         }),

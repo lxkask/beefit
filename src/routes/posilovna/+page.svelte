@@ -324,7 +324,7 @@
 
 <main>
     <!-- Gym Info Section -->
-    <section class="pt-5 pb-20 bg-black text-white">
+    <section class="pt-5 pb-20 bg-black text-white px-10">
         <div class="container mx-auto text-center">
             <h2 class="text-3xl font-bold font-heading mb-10">O BeeFIT</h2>
             <div class="flex justify-center">
@@ -422,7 +422,7 @@
     </section>
 
     <!-- Equipment Section -->
-    <section class="py-20 bg-grey">
+    <section class="py-20 bg-grey px-10">
         <div class="container mx-auto text-center">
             <h2 class="text-3xl font-bold font-heading mb-10 text-white">Vybavení</h2>
             <div class="px-8 md:px-0">
@@ -459,8 +459,11 @@
                 <button 
                     class="absolute top-1/2 left-4 transform -translate-y-1/2 text-black bg-yellow rounded-full w-12 h-12 flex items-center justify-center hover:bg-yellow_hover z-10" 
                     on:click={prevImage}
+                    aria-label="Previous slide"
                 >
-                    ‹
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
                 </button>
 
                 <div class="relative max-h-[90vh] max-w-[90vw]">
@@ -479,8 +482,10 @@
                 <button 
                     class="absolute top-1/2 right-4 transform -translate-y-1/2 text-black bg-yellow rounded-full w-12 h-12 flex items-center justify-center hover:bg-yellow_hover z-10" 
                     on:click={nextImage}
-                >
-                    ›
+                    aria-label="Next slide">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
                 </button>
             </div>
         {/if}
