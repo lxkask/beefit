@@ -10,7 +10,13 @@ const config = {
     ]),
 
     kit: {
-		adapter: adapter()
+		adapter: adapter(),
+		typescript: {
+            config: (config) => {
+                config.include.push('../src/lib/types/**/*.ts');
+                return config;
+            }
+        }
 	}
 };
 
