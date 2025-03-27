@@ -324,7 +324,7 @@
 
 <main>
     <!-- Gym Info Section -->
-    <section class="pt-5 pb-20 bg-black text-white px-10">
+    <section class="pt-10 pb-20 bg-black text-white px-10">
         <div class="container mx-auto text-center">
             <h2 class="text-3xl font-bold font-heading mb-10">O BeeFIT</h2>
             <div class="flex justify-center">

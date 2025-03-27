@@ -67,7 +67,7 @@
                 </div>
                 
                 <div class="lg:w-1/2">
-                    <img src={gymEntrance} alt="Vstup do fitness centra" class="w-full h-64 rounded shadow-lg object-cover" />
+                    <img src={gymEntrance} alt="Vstup do fitness centra" class="w-full h-80 rounded shadow-lg object-cover" />
                 </div>
             </div>
         </div>

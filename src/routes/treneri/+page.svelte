@@ -27,7 +27,43 @@
     </section>
 
     <section class="pb-10 bg-grey text-white">
-        <div class="container mx-auto space-y-12 md:space-y-24 px-4 bg-grey py-12">
+        <!-- New Individual Training Section -->
+        <div class="container mx-auto px-4 py-12">
+            <div class="max-w-4xl mx-auto bg-black/50 p-6 md:p-8 rounded-lg border border-yellow/30">
+                <h3 class="text-3xl font-bold text-white mb-4 text-center font-heading">Individuální lekce</h3>
+                <p class="text-lg mb-6 text-center">
+                    Pokud preferujete osobní přístup, domluvte si individuální lekci s našimi trenéry.
+                </p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+                    <div class="flex flex-col items-center text-center p-4">
+                        <div class="text-yellow text-3xl font-bold mb-2">1</div>
+                        <h4 class="font-bold mb-2">Vyberte trenéra</h4>
+                        <p>Prohlédněte si naše profesionální trenéry a jejich specializace</p>
+                    </div>
+                    
+                    <div class="flex flex-col items-center text-center p-4">
+                        <div class="text-yellow text-3xl font-bold mb-2">2</div>
+                        <h4 class="font-bold mb-2">Domluvte termín</h4>
+                        <p>Kontaktujte trenéra a domluvte si vhodný čas pro vaši lekci</p>
+                    </div>
+                    
+                    <div class="flex flex-col items-center text-center p-4">
+                        <div class="text-yellow text-3xl font-bold mb-2">3</div>
+                        <h4 class="font-bold mb-2">Začněte trénovat</h4>
+                        <p>Při návštěvě fitness uhradíte vstup jakoukoliv formou</p>
+                        <p class="text-sm mt-2 text-yellow/80">(Multisport, jednorázový vstup, permanentka…)</p>
+                    </div>
+                </div>
+                
+                <div class="mt-8 text-center text-sm text-white/80">
+                    <p>Cena za trénink se řeší přímo s trenérem.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trainers List -->
+        <div class="container mx-auto space-y-12 md:space-y-24 px-4 py-12">
             {#each trainers as trainer, index}
                 <div class="flex flex-col md:flex-row justify-center items-center gap-12 md:gap-32 
                     {index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}">
