@@ -8,3 +8,11 @@ export interface GroupSession {
 export interface GroupSessionsDocument {
     sessions?: GroupSession[];
 }
+
+export interface HiringDocument {
+    active: boolean;
+    title?: string;
+    description?: any; // Portable Text
+    formLink?: string;
+    buttonText?: string;
+}

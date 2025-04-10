@@ -1,9 +1,17 @@
-<script>
+<script lang="ts">
     import phone from '../../lib/images/phone-icon.svg';
     import clock from '../../lib/images/clock-icon.svg';
     import email from '../../lib/images/email-icon.svg';
     import map from '../../lib/images/map-marker-icon.svg';
-    import gymEntrance from '../../lib/images/gym-entrance.jpg';
+    import gymEntrance480 from '../../lib/images/gym-entrance-480.webp';
+    import gymEntrance768 from '../../lib/images/gym-entrance-768.webp';
+    import gymEntrance1024 from '../../lib/images/gym-entrance-1024.webp';
+    import gymEntrance1280 from '../../lib/images/gym-entrance-1280.webp';
+
+    import type { PageData } from './$types';
+    import { PortableText } from '@portabletext/svelte';
+    
+    export let data: PageData;
 </script>
 
 <main>
@@ -54,6 +62,47 @@
         </div>
     </section>
 
+    <!-- Hiring Section (Conditional) -->
+    {#if data.hiring?.active}
+    <section class="bg-yellow/10 border-y border-yellow/30 py-12">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold font-heading text-yellow">{data.hiring.title || 'Hledáme posilu na recepci!'}</h2>
+            </div>
+
+            <div class="flex flex-col lg:flex-row items-center gap-8">
+                <div class="lg:w-2/3 text-left text-white">
+                    {#if data.hiring.description}
+                        <div class="prose text-white text-lg">
+                            <!-- Replace @html with PortableText component -->
+                            <PortableText value={data.hiring.description} />
+                        </div>
+                    {:else}
+                        <p class="mb-4">Hledáme spolehlivého a příjemného kolegu/kolegyni na pozici recepční v našem fitness centru.</p>
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li><span class="font-semibold">Náplň práce:</span> obsluha recepce, komunikace s klienty, správa rezervací</li>
+                            <li><span class="font-semibold">Požadujeme:</span> příjemné vystupování, spolehlivost, základní znalost PC</li>
+                            <li><span class="font-semibold">Nabízíme:</span> příjemné prostředí, možnost zdarma využívat fitness, firemní benefity</li>
+                        </ul>
+                    {/if}
+                </div>
+                
+                <div class="lg:w-1/3 flex justify-center">
+                    <a 
+                        href={data.hiring.formLink || 'https://docs.google.com/forms/d/e/1FAIpQLSf16v64k6Nwza8x58_gwNUs_nfu9h6Y_4NEltJ6aw8-Ru-nyQ/viewform'} 
+                        target="_blank" 
+                        class="w-full">
+                        <button class="bg-yellow hover:bg-yellow_hover text-black font-bold py-3 px-8 rounded-lg w-full max-w-xs">
+                            {data.hiring.buttonText || 'Mám zájem'}
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    {/if}
+
+
     <!-- How to Find Us Section -->
     <section class="bg-grey text-white py-12">
         <div class="container mx-auto px-6 lg:w-2/3">
@@ -67,7 +116,13 @@
                 </div>
                 
                 <div class="lg:w-1/2">
-                    <img src={gymEntrance} alt="Vstup do fitness centra" class="w-full h-80 rounded shadow-lg object-cover" />
+                    <img
+                        src={gymEntrance768}
+                        srcset={`${gymEntrance480} 480w, ${gymEntrance768} 768w, ${gymEntrance1024} 1024w, ${gymEntrance1280} 1280w`}
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 640px"
+                        alt="Vstup do fitness centra"
+                        class="w-full h-80 rounded shadow-lg object-cover"
+                    />
                 </div>
             </div>
         </div>
