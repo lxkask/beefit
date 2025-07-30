@@ -1,7 +1,9 @@
 {
   "extends": "./.svelte-kit/tsconfig.json",
   "compilerOptions": {
-    "types": ["svelte"]
+    "types": ["svelte"],
+    "moduleResolution": "node",
+    "allowJs": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "public"]
