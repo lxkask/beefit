@@ -422,7 +422,7 @@
     </section>
 
     <!-- Equipment Section -->
-    <section class="py-20 bg-grey px-10">
+    <section class="py-20 bg-grey">
         <div class="container mx-auto text-center">
             <h2 class="text-3xl font-bold font-heading mb-10 text-white">Vybavení</h2>
             <div class="px-8 md:px-0">
