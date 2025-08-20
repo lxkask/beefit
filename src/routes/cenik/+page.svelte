@@ -1,24 +1,65 @@
-<script>
-  export let data;
-  const { priceTable, paymentMethods } = data;
-
+<script lang="ts">
+  import { onMount } from 'svelte';
+  import { sanityClient } from '$lib/sanityClient';
   import { createTooltip, melt } from '@melt-ui/svelte';
   import info from '../../lib/images/info.svg';
   import { fade } from 'svelte/transition';
   import { browser } from '$app/environment';
 
-  // Destructure student pricing with fallback values
-  const studentPricing = priceTable?.studentPricing || {
+  // DATA ze Sanity
+  let priceTable = null;
+  let paymentMethods = null;
+  let isLoading = true;
+
+  onMount(async () => {
+    try {
+      const query = `
+        {
+          "priceTable": *[_type == "priceTable"][0] {
+            title,
+            rows[] {
+              type,
+              allDay,
+              workingHours,
+              eveningWeekend
+            },
+            studentPricing {
+              singleEntry,
+              monthlyPass
+            }
+          },
+          "paymentMethods": *[_type == "paymentMethods"][0] {
+            methods
+          }
+        }
+      `;
+      const result = await sanityClient.fetch(query);
+      priceTable = result.priceTable;
+      paymentMethods = result.paymentMethods;
+
+      // fallback zde (ne dřív!)
+      studentPricing = priceTable?.studentPricing || {
+        singleEntry: 100,
+        monthlyPass: 990
+      };
+    } catch (error) {
+      console.error('Chyba při načítání dat ze Sanity:', error);
+      priceTable = null;
+      paymentMethods = null;
+    }
+  });
+
+    let studentPricing = {
     singleEntry: 100,
     monthlyPass: 990
   };
 
-  // Format currency (100 -> "100 Kč")
-  function formatCurrency(amount) {
+  // Format currency
+  function formatCurrency(amount: number) {
     return `${amount} Kč`;
   }
 
-  // Tooltip 1 (for "Studentský vstup")
+  // Tooltip 1
   const {
     elements: { trigger: trigger1, content: content1, arrow: arrow1 },
     states: { open: open1 },
@@ -26,17 +67,9 @@
     positioning: {
       placement: 'bottom',
     },
-    forceVisible: true,
-    closeOnPointerDown: true,
-    openDelay: 100,
-    closeDelay: 100,
-    closeOnEscape: true,
-    closeOnOutsideClick: true,
-    ignoreClickOutside: false,
-    disableFocusListener: false,
   });
 
-  // Tooltip 2 (for "Záloha za permici")
+  // Tooltip 2
   const {
     elements: { trigger: trigger2, content: content2, arrow: arrow2 },
     states: { open: open2 },
@@ -44,32 +77,26 @@
     positioning: {
       placement: 'bottom',
     },
-    forceVisible: true,
-    closeOnPointerDown: true,
-    openDelay: 100,
-    closeDelay: 100,
-    closeOnEscape: true,
-    closeOnOutsideClick: true,
-    ignoreClickOutside: false,
-    disableFocusListener: false,
   });
 
-  // Enhanced mobile touch handling
+  // iOS & touch handling
   if (browser) {
-    // Add passive touch event listener
     document.addEventListener('touchstart', () => {}, { passive: true });
-    
-    // Prevent iOS zooming on double-tap
-    document.addEventListener('dblclick', (e) => {
-      if (e.target.closest('[data-melt-tooltip-trigger]')) {
-        e.preventDefault();
-      }
-    }, { passive: false });
+    document.addEventListener(
+      'dblclick',
+      (e) => {
+        const target = e.target as HTMLElement;
+        if (target.closest('[data-melt-tooltip-trigger]')) {
+                  e.preventDefault();
+                }
+      },
+      { passive: false }
+    );
   }
 
-  function handleTooltipToggle(openStore) {
+  function handleTooltipToggle(openStore: any) {
     setTimeout(() => {
-      openStore.update(isOpen => !isOpen);
+      openStore.update((isOpen: boolean) => !isOpen);
     }, 50);
   }
 </script>
@@ -77,8 +104,18 @@
 <main>
   <div class="flex justify-center">
     <section class="w-4/5 md:w-3/4 lg:w-2/3 justify-center flex flex-col py-10">
-      {#if priceTable}
-        <h2 class="text-white text-3xl font-bold mb-6 text-center font-heading">{priceTable.title || 'No title available'}</h2>
+      {#if priceTable === null}
+        <!-- Pokud se priceTable nenačetlo (např. chyba ve fetchi) -->
+        <p class="text-white text-center">Nepodařilo se načíst ceník. Zkuste to prosím později.</p>
+      {:else if !priceTable}
+        <!-- Načítání -->
+        <p class="text-white text-center">Načítání...</p>
+      {:else}
+        <!-- Úspěšné načtení -->
+        <h2 class="text-white text-3xl font-bold mb-6 text-center font-heading">
+          {priceTable.title || 'Bez názvu'}
+        </h2>
+
         {#if priceTable.rows?.length > 0}
           <table class="w-full text-left border-collapse border border-yellow table-fixed">
             <thead>
@@ -101,10 +138,8 @@
             </tbody>
           </table>
         {:else}
-          <p class="text-white">No pricing data available.</p>
+          <p class="text-white text-center">Ceníková tabulka je prázdná.</p>
         {/if}
-      {:else}
-        <p class="text-white">Loading...</p>
       {/if}
     
       <!-- First Tooltip -->

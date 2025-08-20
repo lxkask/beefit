@@ -1,38 +1,87 @@
-# sv
+# BeeFIT – Fitness Website Project
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+BeeFIT is a full–year collaboration project created as a high school graduation project together with my classmate.  
+The goal was to design and develop a **modern, responsive, and SEO–optimized website** for a Prague-based fitness center.  
 
-## Creating a project
+The project involved the complete process — from initial meetings with the client, wireframes and design proposals, all the way through to development, accessibility testing, optimization, and deployment.
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Table of contents
 
-```bash
-# create a new project in the current directory
-npx sv create
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
+- [Acknowledgments](#acknowledgments)
 
-# create a new project in my-app
-npx sv create my-app
-```
+## Overview
 
-## Developing
+### The challenge
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+The main challenge was to create a **modern and maintainable website** for a real client, while ensuring:
 
-```bash
-npm run dev
+- Responsive design across devices
+- SEO optimization and performance improvements
+- Accessibility support
+- A custom CMS for the client to easily manage content
+- Deployment on the client’s hosting
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+### Screenshot
 
-## Building
+![Screenshot of the BeeFIT homepage](./src/lib/images/screenshot.png)
 
-To create a production version of your app:
+### Links
 
-```bash
-npm run build
-```
+- Repository: [GitHub Repo](https://github.com/lxkask/beefit)  
+- Live Preview (Netlify): [tubular-stardust-fbff63.netlify.app](https://tubular-stardust-fbff63.netlify.app/)  
+- Test Domain: [fit-fat.cz](http://fit-fat.cz/)  
 
-You can preview the production build with `npm run preview`.
+## My process
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+### Built with
+
+- [Svelte](https://svelte.dev/) – Frontend framework
+- [TailwindCSS](https://tailwindcss.com/) – Utility-first CSS framework
+- [Vite](https://vitejs.dev/) – Fast development build tool
+- [MeltUI](https://melt-ui.com/) – UI components for Svelte
+- [Sanity.io](https://www.sanity.io/) – Headless CMS
+- [Netlify](https://www.netlify.com/) & [Český hosting](https://www.cesky-hosting.cz/) – Deployment
+- Lighthouse & WAVE – Testing accessibility, SEO, and performance
+
+### What I learned
+
+- How to work on a **long-term project** with continuous client feedback  
+- Setting up and integrating a **headless CMS** with Svelte frontend  
+- Best practices for **SEO optimization and accessibility** (using Lighthouse, WAVE)  
+- Full deployment workflow (Netlify + custom hosting)  
+
+### Continued development
+
+In the future, I would like to:
+
+- Refine CMS integration with even more flexibility for the client  
+- Further improve performance scores and accessibility features  
+- Explore adding animations while respecting reduced motion preferences  
+- Finalize deployment by moving from the test domain to the client’s official domain  
+
+### Useful resources
+
+- [Svelte Documentation](https://svelte.dev/docs) – for mastering component-based development  
+- [TailwindCSS Docs](https://tailwindcss.com/docs) – for rapid styling workflow  
+- [Sanity.io Docs](https://www.sanity.io/docs) – helped with the CMS setup  
+
+## Author
+
+- GitHub – [@lxkask](https://github.com/lxkask)  
+- Instagram – [@l.xkas](https://www.instagram.com/l.xkas/)  
+- LinkedIn – [Lukáš Kubík](https://www.linkedin.com/in/luk%C3%A1%C5%A1-kub%C3%ADk-251605245/)  
+
+## Acknowledgments
+
+A big thank you to my classmate for collaborating on this project, and to our client for the valuable feedback throughout the development process.  
+This project was also supervised as part of our high school graduation requirements. 
