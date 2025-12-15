@@ -1,0 +1,12 @@
+# BeeFIT Praha - robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://fit-fat.cz/sitemap.xml
+
+# Disallow admin and build paths
+Disallow: /admin/
+Disallow: /_app/
+Disallow: /.svelte-kit/
+Disallow: /build/

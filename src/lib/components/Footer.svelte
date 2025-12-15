@@ -17,14 +17,18 @@
                 <img src={phone} alt="Phone Icon" class="w-11 h-11 mr-2" />
                 <p class="flex flex-col">
                     <span class="text-yellow">Telefon</span>
-                    733 60 60 02
+                    <a href="tel:+420733606002" class="hover:text-yellow transition-colors">
+                        733 60 60 02
+                    </a>
                 </p>
             </div>
             <div class="flex items-center">
                 <img src={email} alt="Email Icon" class="w-10 h-10 mr-3" />
                 <p class="flex flex-col">
                     <span class="text-yellow">Email</span>
-                    info@beefit.cz
+                    <a href="mailto:info@beefit.cz" class="hover:text-yellow transition-colors">
+                        info@beefit.cz
+                    </a>
                 </p>
             </div>
         </div>

@@ -26,7 +26,7 @@
 
         <!-- Hamburger Menu Icon -->
         <button
-            class="lg:hidden text-white focus:outline-none z-50"
+            class="lg:hidden text-white z-50 focus-visible:outline-2 focus-visible:outline-yellow focus-visible:outline-offset-2"
             on:click={() => isMenuOpen = !isMenuOpen}
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
         >

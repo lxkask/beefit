@@ -22,6 +22,20 @@ const config = {
         config.include.push('../src/lib/types/**/*.ts');
         return config;
       }
+    },
+
+    csp: {
+      mode: 'auto',
+      directives: {
+        'default-src': ['self'],
+        'script-src': ['self', 'https://fonts.googleapis.com'],
+        'style-src': ['self', 'unsafe-inline', 'https://fonts.googleapis.com'],
+        'img-src': ['self', 'data:', 'https://cdn.sanity.io', 'https://maps.google.com', 'https://maps.gstatic.com'],
+        'font-src': ['self', 'https://fonts.gstatic.com'],
+        'connect-src': ['self', 'https://*.sanity.io', 'https://*.sanity.io'],
+        'frame-src': ['https://maps.google.com', 'https://www.google.com'],
+        'media-src': ['self']
+      }
     }
   }
 };
