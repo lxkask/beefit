@@ -1,4 +1,23 @@
+<svelte:head>
+  <title>Posilovna - BeeFIT Praha</title>
+  <meta name="description" content="Moderní posilovna BeeFIT Praha. Kardio zóna, funkční plocha, volné váhy, profesionální vybavení." />
+  <link rel="canonical" href="https://fit-fat.cz/posilovna" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Posilovna - BeeFIT Praha" />
+  <meta property="og:description" content="Moderní posilovna BeeFIT Praha. Kardio zóna, funkční plocha, volné váhy, profesionální vybavení." />
+  <meta property="og:url" content="https://fit-fat.cz/posilovna" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="cs_CZ" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Posilovna - BeeFIT Praha" />
+  <meta name="twitter:description" content="Moderní posilovna BeeFIT Praha. Kardio zóna, funkční plocha, volné váhy, profesionální vybavení." />
+</svelte:head>
+
 <script lang="ts">
+    import { onMount, onDestroy } from 'svelte';
     import area from '../../lib/images/area-icon.svg';
     import parking from '../../lib/images/parking-icon.svg';
     import train from '../../lib/images/train-icon.svg';
@@ -145,7 +164,7 @@
             large: gym1Large,
             medium: gym1Medium,
             small: gym1Small,
-            alt: "Gym equipment overview"
+            alt: "Pohled na posilovací stroje a vybavení fitness centra"
         },
         {
             id: 2,
@@ -154,7 +173,7 @@
             large: gym2Large,
             medium: gym2Medium,
             small: gym2Small,
-            alt: "Gym equipment overview"
+            alt: "Kardio zóna s běžeckými pásy a eliptickými trenažéry"
         },
         {
             id: 3,
@@ -163,7 +182,7 @@
             large: gym3Large,
             medium: gym3Medium,
             small: gym3Small,
-            alt: "Gym equipment overview"
+            alt: "Funkční plocha s kettlebelly a medicinbaly"
         },
         {
             id: 4,
@@ -172,7 +191,7 @@
             large: gym4Large,
             medium: gym4Medium,
             small: gym4Small,
-            alt: "Gym equipment overview"
+            alt: "Volné váhy a činkový úsek s olympijskými tyčemi"
         },
         {
             id: 5,
@@ -181,7 +200,7 @@
             large: gym5Large,
             medium: gym5Medium,
             small: gym5Small,
-            alt: "Gym equipment overview"
+            alt: "Posilovací lavice a činky různých hmotností"
         },
         {
             id: 6,
@@ -190,7 +209,7 @@
             large: gym6Large,
             medium: gym6Medium,
             small: gym6Small,
-            alt: "Gym equipment overview"
+            alt: "Moderní posilovací stroje na horní část těla"
         },
         {
             id: 7,
@@ -199,7 +218,7 @@
             large: gym7Large,
             medium: gym7Medium,
             small: gym7Small,
-            alt: "Gym equipment overview"
+            alt: "Posilovací stroje na dolní část těla a nohy"
         },
         {
             id: 8,
@@ -208,7 +227,7 @@
             large: gym8Large,
             medium: gym8Medium,
             small: gym8Small,
-            alt: "Gym equipment overview"
+            alt: "Prostorná cvičební plocha s žíněnkami"
         },
         {
             id: 9,
@@ -217,7 +236,7 @@
             large: gym9Large,
             medium: gym9Medium,
             small: gym9Small,
-            alt: "Gym equipment overview"
+            alt: "Posilovací věž a kabelový systém pro komplexní trénink"
         },
         {
             id: 10,
@@ -226,7 +245,7 @@
             large: gym10Large,
             medium: gym10Medium,
             small: gym10Small,
-            alt: "Gym equipment overview"
+            alt: "Spinning bikes pro skupinové lekce"
         },
         {
             id: 11,
@@ -235,7 +254,7 @@
             large: gym11Large,
             medium: gym11Medium,
             small: gym11Small,
-            alt: "Gym equipment overview"
+            alt: "Doplňkové vybavení - bosu, TRX a gymnastické míče"
         },
         {
             id: 12,
@@ -244,7 +263,7 @@
             large: gym12Large,
             medium: gym12Medium,
             small: gym12Small,
-            alt: "Gym equipment overview"
+            alt: "Šatny a prostory pro uložení osobních věcí"
         },
         {
             id: 13,
@@ -253,7 +272,7 @@
             large: gym13Large,
             medium: gym13Medium,
             small: gym13Small,
-            alt: "Gym equipment overview"
+            alt: "Recepce a vstupní prostor fitness centra"
         },
         {
             id: 14,
@@ -262,7 +281,7 @@
             large: gym14Large,
             medium: gym14Medium,
             small: gym14Small,
-            alt: "Gym equipment overview"
+            alt: "Relaxační zóna po tréninku"
         },
         {
             id: 15,
@@ -271,7 +290,7 @@
             large: gym15Large,
             medium: gym15Medium,
             small: gym15Small,
-            alt: "Gym equipment overview"
+            alt: "Cvičební plocha s výhledem na Prahu"
         },
         {
             id: 16,
@@ -280,7 +299,7 @@
             large: gym16Large,
             medium: gym16Medium,
             small: gym16Small,
-            alt: "Gym equipment overview"
+            alt: "Doplňující posilovací vybavení a přístroje"
         },
         {
             id: 17,
@@ -289,7 +308,7 @@
             large: gym17Large,
             medium: gym17Medium,
             small: gym17Small,
-            alt: "Gym equipment overview"
+            alt: "Moderní interiér a osvětlení posilovny"
         },
         {
             id: 18,
@@ -298,19 +317,19 @@
             large: gym18Large,
             medium: gym18Medium,
             small: gym18Small,
-            alt: "Gym equipment overview"
+            alt: "Celkový pohled na fitness centrum BeeFIT Praha"
         }
     ];
 
     function openGallery(index: number) {
         currentImage = index;
         showGallery = true;
-        document.body.style.overflow = 'hidden'; // Prevent scrolling when gallery is open
+        document.body.classList.add('overflow-hidden');
     }
 
     function closeGallery() {
         showGallery = false;
-        document.body.style.overflow = ''; // Re-enable scrolling
+        document.body.classList.remove('overflow-hidden');
     }
 
     function nextImage() {
@@ -320,13 +339,34 @@
     function prevImage() {
         currentImage = (currentImage - 1 + galleryImages.length) % galleryImages.length;
     }
+
+    // Keyboard navigation for lightbox
+    function handleKeydown(e: KeyboardEvent) {
+        if (!showGallery) return;
+
+        if (e.key === 'Escape') {
+            closeGallery();
+        } else if (e.key === 'ArrowLeft') {
+            prevImage();
+        } else if (e.key === 'ArrowRight') {
+            nextImage();
+        }
+    }
+
+    onMount(() => {
+        window.addEventListener('keydown', handleKeydown);
+
+        return () => {
+            window.removeEventListener('keydown', handleKeydown);
+        };
+    });
 </script>
 
 <main>
     <!-- Gym Info Section -->
     <section class="pt-10 pb-20 bg-black text-white px-10">
         <div class="container mx-auto text-center">
-            <h2 class="text-3xl font-bold font-heading mb-10">O BeeFIT</h2>
+            <h1 class="text-3xl font-bold font-heading mb-10">O BeeFIT</h1>
             <div class="flex justify-center">
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                     <!-- Info Item 1 -->
@@ -449,9 +489,10 @@
         <!-- Lightbox Modal -->
         {#if showGallery}
             <div class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4">
-                <button 
-                    class="absolute top-4 right-4 text-white text-3xl hover:text-yellow transition-colors" 
+                <button
+                    class="absolute top-4 right-4 text-white text-3xl hover:text-yellow transition-colors focus:outline-2 focus:outline-yellow focus-visible:outline-yellow"
                     on:click={closeGallery}
+                    aria-label="Close gallery"
                 >
                     &times;
                 </button>

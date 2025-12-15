@@ -1,7 +1,23 @@
+<svelte:head>
+  <title>Kontakt - BeeFIT Praha</title>
+  <meta name="description" content="Kontaktní údaje fitness BeeFIT Praha. Adresa, otevírací doba, online rezervace, informace." />
+  <link rel="canonical" href="https://fit-fat.cz/kontakt" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Kontakt - BeeFIT Praha" />
+  <meta property="og:description" content="Kontaktní údaje fitness BeeFIT Praha. Adresa, otevírací doba, online rezervace, informace." />
+  <meta property="og:url" content="https://fit-fat.cz/kontakt" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="cs_CZ" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Kontakt - BeeFIT Praha" />
+  <meta name="twitter:description" content="Kontaktní údaje fitness BeeFIT Praha. Adresa, otevírací doba, online rezervace, informace." />
+</svelte:head>
+
 <script lang="ts">
-  import { onMount } from 'svelte';
   import { sanityClient } from '$lib/sanityClient';
-  import { PortableText } from '@portabletext/svelte';
 
   import phone from '../../lib/images/phone-icon.svg';
   import clock from '../../lib/images/clock-icon.svg';
@@ -12,34 +28,55 @@
   import gymEntrance1024 from '../../lib/images/gym-entrance-1024.webp';
   import gymEntrance1280 from '../../lib/images/gym-entrance-1280.webp';
 
-  let hiring = null;
-  let isLoading = true;
+  let hiring = $state(null);
+  let isLoading = $state(true);
 
-  onMount(async () => {
-    try {
-      const result = await sanityClient.fetch(`
-        *[_type == "hiring"][0] {
-          active,
-          title,
-          description,
-          formLink,
-          buttonText
-        }
-      `);
-      hiring = result;
-    } catch (error) {
-      console.error('Chyba při načítání hiring dat:', error);
-    } finally {
-      isLoading = false;
+  $effect(() => {
+    async function loadHiring() {
+      try {
+        const result = await sanityClient.fetch(`
+          *[_type == "hiring"][0] {
+            active,
+            title,
+            description,
+            formLink,
+            buttonText
+          }
+        `);
+        hiring = result;
+      } catch (error) {
+        console.error('Chyba při načítání hiring dat:', error);
+      } finally {
+        isLoading = false;
+      }
     }
+
+    loadHiring();
   });
+
+  // Helper to convert Portable Text to plain text
+  function portableTextToPlainText(blocks: any): string {
+    if (!blocks) return '';
+    if (Array.isArray(blocks)) {
+      return blocks
+        .map(block => {
+          if (block._type === 'block' && block.children) {
+            return block.children.map((child: any) => child.text).join('');
+          }
+          return '';
+        })
+        .filter(Boolean)
+        .join('\n\n');
+    }
+    return '';
+  }
 </script>
 
 <main>
   <!-- Kontakt Info -->
   <section class="bg-black text-white py-12">
     <div class="container mx-auto text-center mb-12">
-      <h2 class="text-3xl font-bold mb-4 font-heading">Kontakt</h2>
+      <h1 class="text-3xl font-bold mb-4 font-heading">Kontakt</h1>
     </div>
 
     <div class="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 px-6 sm:text-left text-center w-3/4">
@@ -82,7 +119,7 @@
   </section>
 
   <!-- Hiring (if active) -->
-  {#if !isLoading && hiring?.active}
+  {#if hiring?.active}
     <section class="bg-yellow/10 border-y border-yellow/30 py-12">
       <div class="container mx-auto px-6 max-w-4xl">
         <div class="text-center mb-8">
@@ -92,8 +129,8 @@
         <div class="flex flex-col lg:flex-row items-center gap-8">
           <div class="lg:w-2/3 text-left text-white">
             {#if hiring.description}
-              <div class="prose text-white text-lg">
-                <PortableText value={hiring.description} />
+              <div class="prose text-white text-lg whitespace-pre-line">
+                {portableTextToPlainText(hiring.description)}
               </div>
             {:else}
               <p class="mb-4">Hledáme spolehlivého a příjemného kolegu/kolegyni na pozici recepční v našem fitness centru.</p>
@@ -106,9 +143,10 @@
           </div>
 
           <div class="lg:w-1/3 flex justify-center">
-            <a 
-              href={hiring.formLink || 'https://docs.google.com/forms/...'} 
-              target="_blank" 
+            <a
+              href={hiring.formLink || 'https://docs.google.com/forms/...'}
+              target="_blank"
+              rel="noopener noreferrer"
               class="w-full">
               <button class="bg-yellow hover:bg-yellow_hover text-black font-bold py-3 px-8 rounded-lg w-full max-w-xs">
                 {hiring.buttonText || 'Mám zájem'}
@@ -154,10 +192,10 @@
       <div class="lg:w-full">
         <iframe
           src="https://maps.google.com/maps?q=BeeFIT&t=&z=13&ie=UTF8&iwloc=&output=embed"
-          class="w-full h-64 rounded"
-          frameborder="0"
+          class="w-full h-64 rounded border-0"
           title="BeeFIT Lokace"
-          allowfullscreen>
+          allowfullscreen
+          sandbox="allow-scripts allow-same-origin allow-popups">
         </iframe>
       </div>
     </div>

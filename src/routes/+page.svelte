@@ -144,8 +144,22 @@
         setTimeout(() => {
             startAutoSlide();
         }, 500);
-        
-        return stopAutoSlide;
+
+        // Keyboard navigation
+        const handleKeydown = (e: KeyboardEvent) => {
+            if (e.key === 'ArrowLeft') {
+                prevSlide();
+            } else if (e.key === 'ArrowRight') {
+                nextSlide();
+            }
+        };
+
+        window.addEventListener('keydown', handleKeydown);
+
+        return () => {
+            stopAutoSlide();
+            window.removeEventListener('keydown', handleKeydown);
+        };
     });
 </script>
 
@@ -153,13 +167,13 @@
     <!-- Hero Section -->
     <section class="hero relative md:h-[75vh] h-[60vh] w-full flex md:items-end items-end">
         <!-- Video Background -->
-        <video 
-            autoplay 
-            muted 
-            loop 
-            playsinline 
-            disablePictureInPicture 
-            preload="auto"
+        <video
+            autoplay
+            muted
+            loop
+            playsinline
+            disablePictureInPicture
+            preload="none"
             poster={currentPoster}
             on:error={() => currentPoster = posterJpg}
             class="absolute top-0 left-0 w-full h-full object-cover"
@@ -255,9 +269,9 @@
     <section class="equipment py-24 bg-grey">
         <div class="relative">
             <!-- Slideshow Container -->
-            <div role="region" 
+            <div role="region"
             aria-label="Image carousel"
-            class="relative overflow-hidden w-full mx-auto max-w-screen-xl px-8g">
+            class="relative overflow-hidden w-full mx-auto max-w-screen-xl px-8">
                 <!-- Slides -->
                 <div class="flex h-[500px] transition-transform duration-500 ease-out" 
                     style="transform: translateX(-{currentIndex * 100}%)">
@@ -337,10 +351,10 @@
             <div class="flex justify-center mt-8 md:mt-0 px-10 md:px-0">
                 <iframe
                     src="https://maps.google.com/maps?q=BeeFIT&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                    class="w-full md:w-2/3 h-72 md:h-72 rounded"
-                    frameborder="0"
+                    class="w-full md:w-2/3 h-72 md:h-72 rounded border-0"
                     title="BeeFIT Lokace"
-                    allowfullscreen>
+                    allowfullscreen
+                    sandbox="allow-scripts allow-same-origin allow-popups">
                 </iframe>
             </div>
         </div>

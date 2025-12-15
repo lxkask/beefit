@@ -22,3 +22,7 @@ vite.config.ts.timestamp-*
 
 !sanity-backend/
 !sanity-backend/**
+
+# Production files
+*.zip
+beefit-production*/
